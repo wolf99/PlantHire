@@ -70,8 +70,6 @@ namespace FisherPlantHire
                 new string[] { Code, DetailLn1, DetailLn2, DetailLn3, DetailLn4, DetailLn5,
                     WeeklyRate.ToString("F2", CultureInfo.InvariantCulture),
                     DailyRate.ToString("F2", CultureInfo.InvariantCulture) });
-            // Add a trailing CRLF
-            s += "\n";
             return s;
         }
     }

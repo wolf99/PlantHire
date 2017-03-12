@@ -55,8 +55,6 @@ namespace FisherPlantHire
             string s = 
                 string.Join(",", 
                 new string[] { Code, Name, AddressLn1, AddressLn2, AddressLn3, AddressLn4, AddressLn5 });
-            // Add a trailing CRLF
-            s += "\n";
             return s;
         }
     }
