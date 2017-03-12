@@ -61,5 +61,18 @@ namespace FisherPlantHire
                 throw new System.ArgumentException("Machine parse failed", f.ToString(), e);
             }
         }
+
+        public override string ToString()
+        {
+            // Concatenate all the property strings
+            string s =
+                string.Join(",",
+                new string[] { Code, DetailLn1, DetailLn2, DetailLn3, DetailLn4, DetailLn5,
+                    WeeklyRate.ToString("F2", CultureInfo.InvariantCulture),
+                    DailyRate.ToString("F2", CultureInfo.InvariantCulture) });
+            // Add a trailing CRLF
+            s += "\n";
+            return s;
+        }
     }
 }

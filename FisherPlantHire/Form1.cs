@@ -28,11 +28,20 @@ namespace FisherPlantHire
         {
             HirerFactory hf = new HirerFactory(); // Create record factories
             MachineFactory mf = new MachineFactory();
+            
             HirerCsvPath = Path.GetFullPath(Properties.Resources.HirerCsvPath);
             PlantCsvPath = Path.GetFullPath(Properties.Resources.PlantCsvPath);
 
-            Hirers.DataSource = GetList<Hirer>(hf, HirerCsvPath); // Nind factories to BindingSources
-            Machines.DataSource = GetList<Machine>(mf, PlantCsvPath);
+            // Bind factories to BindingSources
+            if (File.Exists(HirerCsvPath))
+                Hirers.DataSource = GetListFromCsvFile<Hirer>(hf, HirerCsvPath);
+            else
+                Hirers.DataSource = new List<Hirer>();
+
+            if (File.Exists(PlantCsvPath))
+                Machines.DataSource = GetListFromCsvFile<Machine>(mf, PlantCsvPath);
+            else
+                Machines.DataSource = new List<Machine>();
             
             HirerDataGridView.DataSource = Hirers; // Bind form controls to BindingSources
             HirerCode.DataSource = Hirers;
@@ -60,10 +69,27 @@ namespace FisherPlantHire
             // MOAR WURK HERE !
         }
 
-        private List<T> GetList<T>(RecordFactory factory, string path)
+        private List<T> GetListFromCsvFile<T>(RecordFactory factory, string path)
         {
             List<T> list = new List<T>();
-            TextFieldParser parser = new TextFieldParser(path);
+            TextFieldParser parser;
+            try
+            {
+                parser = new TextFieldParser(path); // Open the text file for parsing
+            }
+            catch (FileNotFoundException e)
+            {
+                string message = string.Format("Could not find file\n{0}\nA new file will be created when adding new records.", path);
+                MessageBox.Show(message, "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+            catch (System.Exception e)
+            {
+                string message = string.Format("The file could not be opened.\n{0}\n{2}", path, e.Message);
+                MessageBox.Show(message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(",");
 
@@ -92,6 +118,30 @@ namespace FisherPlantHire
             }
             parser.Close();
             return list;
+        }
+
+        private void UpdateCsvFile(List<Record> records, string path)
+        {
+            FileStream fs;
+            StreamWriter sw;
+            try
+            {
+                fs = new FileStream(path, FileMode.Create, FileAccess.Write);
+                sw = new StreamWriter(fs);
+            }
+            catch (System.Exception e)
+            {
+                string message = string.Format("Could not open file for writing\n{0}\n{1}", path, e.Message);
+                MessageBox.Show("Cannot open file", message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (Record r in records)
+            {
+                sw.WriteLine(r.ToString());
+            }
+            sw.Close();
+            fs.Close();
         }
     }
 }
