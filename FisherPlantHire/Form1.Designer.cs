@@ -516,6 +516,7 @@
             this.Print.TabIndex = 47;
             this.Print.Text = "Print";
             this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
             // Form1
             // 

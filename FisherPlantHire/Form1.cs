@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
+using Novacode;
 
 namespace FisherPlantHire
 {
@@ -67,6 +68,16 @@ namespace FisherPlantHire
             DailyRate.DataBindings.Add("Text", Machines, "DailyRate");
 
             // MOAR WURK HERE !
+        }
+
+        private void Print_Click(object sender, EventArgs e)
+        {
+            using (DocX document = DocX.Create("Test.docx"))
+            {
+                Paragraph p = document.InsertParagraph();
+                p.Append("Hello world");
+                document.Save();
+            }
         }
 
         private List<T> GetListFromCsvFile<T>(RecordFactory factory, string path)
