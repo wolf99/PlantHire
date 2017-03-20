@@ -61,6 +61,15 @@ namespace FisherPlantHire.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\ContractTemplate.dotx.
+        /// </summary>
+        internal static string ContractTemplatePath {
+            get {
+                return ResourceManager.GetString("ContractTemplatePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\Hirers.csv.
         /// </summary>
         internal static string HirerCsvPath {

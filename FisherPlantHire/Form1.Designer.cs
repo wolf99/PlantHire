@@ -138,6 +138,7 @@
             this.HirerName.Name = "HirerName";
             this.HirerName.Size = new System.Drawing.Size(215, 30);
             this.HirerName.TabIndex = 3;
+            this.HirerName.Tag = "";
             // 
             // HirerAddressLn1
             // 
@@ -516,6 +517,7 @@
             this.Print.TabIndex = 47;
             this.Print.Text = "Print";
             this.Print.UseVisualStyleBackColor = true;
+            this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
             // Form1
             // 
