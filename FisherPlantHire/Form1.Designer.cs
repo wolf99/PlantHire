@@ -448,6 +448,7 @@
             this.AddHirer.TabIndex = 19;
             this.AddHirer.Text = "Add New Hirer";
             this.AddHirer.UseVisualStyleBackColor = true;
+            this.AddHirer.Click += new System.EventHandler(this.AddHirer_Click);
             // 
             // UpdateHirer
             // 
@@ -458,6 +459,7 @@
             this.UpdateHirer.TabIndex = 20;
             this.UpdateHirer.Text = "Update Hirer";
             this.UpdateHirer.UseVisualStyleBackColor = true;
+            this.UpdateHirer.Click += new System.EventHandler(this.UpdateHirer_Click);
             // 
             // DeleteHirer
             // 
@@ -468,6 +470,7 @@
             this.DeleteHirer.TabIndex = 21;
             this.DeleteHirer.Text = "Delete Hirer";
             this.DeleteHirer.UseVisualStyleBackColor = true;
+            this.DeleteHirer.Click += new System.EventHandler(this.DeleteHirer_Click);
             // 
             // AddPlant
             // 
@@ -478,6 +481,7 @@
             this.AddPlant.TabIndex = 43;
             this.AddPlant.Text = "Add New Plant";
             this.AddPlant.UseVisualStyleBackColor = true;
+            this.AddPlant.Click += new System.EventHandler(this.AddPlant_Click);
             // 
             // UpdatePlant
             // 
@@ -488,6 +492,7 @@
             this.UpdatePlant.TabIndex = 44;
             this.UpdatePlant.Text = "Update Plant";
             this.UpdatePlant.UseVisualStyleBackColor = true;
+            this.UpdatePlant.Click += new System.EventHandler(this.UpdatePlant_Click);
             // 
             // DeletePlant
             // 
@@ -498,6 +503,7 @@
             this.DeletePlant.TabIndex = 45;
             this.DeletePlant.Text = "Delete Plant";
             this.DeletePlant.UseVisualStyleBackColor = true;
+            this.DeletePlant.Click += new System.EventHandler(this.DeletePlant_Click);
             // 
             // Clear
             // 

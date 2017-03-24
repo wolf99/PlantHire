@@ -96,25 +96,51 @@ namespace FisherPlantHire
             MachineDataGridView.Columns[7].HeaderText = "Daily Rate";
 
             // Set column widths to automatically set to the best width for the 
-            // width of the window
+            // width of the window.
+            // Code column should only be the minimum width.
+            // Name column should have highest width priority.
+            // Address columns should then equally take up all remaining width.
+            HirerDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            HirerDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            HirerDataGridView.Columns[0].FillWeight = 3;
+            HirerDataGridView.Columns[1].FillWeight = 2;
+            HirerDataGridView.Columns[2].FillWeight = 1;
+            HirerDataGridView.Columns[3].FillWeight = 1;
+            HirerDataGridView.Columns[4].FillWeight = 1;
+            HirerDataGridView.Columns[5].FillWeight = 1;
+            HirerDataGridView.Columns[6].FillWeight = 1;
 
-            //HirerDataGridView.Columns[2].Width = 
+            // Code column should only be the minimu width.
+            // First detail line column should have preference.
+            // Subsequent detail lines have equal preference.
+            // Rate columns should both only be as wide as they need to be
+            MachineDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            MachineDataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            MachineDataGridView.Columns[0].FillWeight = 4;
+            MachineDataGridView.Columns[1].FillWeight = 3;
+            MachineDataGridView.Columns[2].FillWeight = 2;
+            MachineDataGridView.Columns[3].FillWeight = 2;
+            MachineDataGridView.Columns[4].FillWeight = 2;
+            MachineDataGridView.Columns[5].FillWeight = 2;
+            MachineDataGridView.Columns[6].FillWeight = 1;
+            MachineDataGridView.Columns[7].FillWeight = 1;
 
-            // Make the Code boxes show some nice autocomplete suggestions
+            // Make the Code ComboBoxes boxes show autocomplete suggestions
+            // based on the databound list contents
             HirerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             HirerCode.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             PlantCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             PlantCode.AutoCompleteSource = AutoCompleteSource.ListItems;
-
-            // MOAR WURK HERE !
         }
 
         private void Print_Click(object sender, EventArgs e)
         {
+            // Open the MS Word application via Office Interop
             Word.Application wordApp = new Word.Application();
             Word.Document wordDoc;
 
+            // Attempt to open the template
             try
             {
                 wordDoc = wordApp.Documents.Add(Template: ContractTemplatePath, Visible: false);
@@ -126,8 +152,10 @@ namespace FisherPlantHire
                 return;
             }
 
+            // Ensure the opened document is the currently active one
             wordDoc.Activate();
 
+            // Set the text for each bookmark from the corresponding data in the GUI
             SetBookmarkText(wordDoc, "Hirer", HirerName.Text);
             SetBookmarkText(wordDoc, "HirerAddress1", HirerAddressLn1.Text);
             SetBookmarkText(wordDoc, "HirerAddress2", HirerAddressLn2.Text);
@@ -151,7 +179,10 @@ namespace FisherPlantHire
             SetBookmarkText(wordDoc, "PlantDetail3", PlantDetailLn3.Text);
             SetBookmarkText(wordDoc, "PlantDetail4", PlantDetailLn4.Text);
             SetBookmarkText(wordDoc, "PlantDetail5", PlantDetailLn5.Text);
-            
+
+            // Attempt to print the document and then close it without saving 
+            // the changes (once the document is printed we don't need the 
+            // changes anymore). Then close the MS Word application.
             try
             {
                 wordDoc.PrintOut();
@@ -170,23 +201,30 @@ namespace FisherPlantHire
         {
             List<T> list = new List<T>();
             TextFieldParser parser;
+
+            // Attempt to open the text file with the parser
             try
             {
-                parser = new TextFieldParser(path); // Open the text file for parsing
+                parser = new TextFieldParser(path); 
             }
             catch (FileNotFoundException)
             {
+                // The file or path was not found, in this case we can have the 
+                // program create a new file to use
                 string message = string.Format("Could not find file\n{0}\nA new file will be created when adding new records.", path);
                 MessageBox.Show(message, "File not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return null;
+                return new List<T>();
             }
             catch (System.Exception e)
             {
+                // Some other error prevented the parser from opening the file,
+                // this is more serious
                 string message = string.Format("The file could not be opened.\n{0}\n{2}", path, e.Message);
                 MessageBox.Show(message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
 
+            // Tell the parser how the file data is delimited (CSV)
             parser.TextFieldType = FieldType.Delimited;
             parser.SetDelimiters(",");
 
@@ -194,25 +232,33 @@ namespace FisherPlantHire
             {
                 string[] fields = new string[0];
                 Record r;
+
                 try
                 {
-                    fields = parser.ReadFields(); // Read all fields on current line
-                    r = factory.MakeRecord(fields); // Use fileds to create a record object
+                    // Read all fields on current line
+                    fields = parser.ReadFields();
+                    // Desearialize fields to create a record object
+                    r = factory.MakeRecord(fields); 
                 }
                 catch (MalformedLineException e)
                 {
+                    // The line read from the file was not in the format 
+                    // expected by the parser
                     string message = string.Format("Line {0} malformed\nIn file: {2}\nLine will not be included.", e.LineNumber, path);
                     MessageBox.Show(message, "CSV parser error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     continue;
                 }
                 catch (System.ArgumentException e)
                 {
+                    // The fields were not as expected by the factory
                     string message = string.Format("Could not parse {0}\nLine {1}\n\n{2}", e.ParamName, (parser.LineNumber - 1), path);
                     MessageBox.Show(message, "CSV field error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     continue;
                 }
-                list.Add((T)(object)r); // Add record object to list
+                // Add record object to list
+                list.Add((T)(object)r); 
             }
+            // Close the parser (closes the file)
             parser.Close();
             return list;
         }
@@ -221,6 +267,9 @@ namespace FisherPlantHire
         {
             FileStream fs;
             StreamWriter sw;
+
+            // Attempt to open the file as a stream and use that to instantiate 
+            // a StreamWriter
             try
             {
                 fs = new FileStream(path, FileMode.Create, FileAccess.Write);
@@ -228,25 +277,63 @@ namespace FisherPlantHire
             }
             catch (System.Exception e)
             {
+                // The file could not be opened or if it did the StreamWriter 
+                // had a problem with it. Either way, from a user's perspective, 
+                // the file could not be opened
                 string message = string.Format("Could not open file for writing\n{0}\n{1}", path, e.Message);
                 MessageBox.Show("Cannot open file", message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Serialize each record, writing each to the file as a single line
             foreach (Record r in records)
             {
                 sw.WriteLine(r.ToString());
             }
+
+            // Close the StreamWriter and then the file stream (clsoes the file)
             sw.Close();
             fs.Close();
         }
 
         private void SetBookmarkText(Word.Document document, string bookmark, string text)
         {
-            if (document.Bookmarks.Exists(bookmark)) // Check bookmark exists
+            // Check bookmark exists
+            if (document.Bookmarks.Exists(bookmark)) 
             {
-                document.Bookmarks[bookmark].Range.Text = text; // Set bookmark text
+                // Set bookmark text
+                document.Bookmarks[bookmark].Range.Text = text; 
             }
+        }
+
+        private void UpdateHirer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddHirer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeleteHirer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddPlant_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdatePlant_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DeletePlant_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
