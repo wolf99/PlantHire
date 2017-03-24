@@ -80,6 +80,33 @@ namespace FisherPlantHire
             WeeklyRate.DataBindings.Add("Text", Machines, "WeeklyRate");
             DailyRate.DataBindings.Add("Text", Machines, "DailyRate");
 
+            // Make the DataGridView column headings nicer
+            HirerDataGridView.Columns[2].HeaderText = "Address 1";
+            HirerDataGridView.Columns[3].HeaderText = "Address 2";
+            HirerDataGridView.Columns[4].HeaderText = "Address 3";
+            HirerDataGridView.Columns[5].HeaderText = "Address 4";
+            HirerDataGridView.Columns[6].HeaderText = "Address 5";
+
+            MachineDataGridView.Columns[1].HeaderText = "Detail 1";
+            MachineDataGridView.Columns[2].HeaderText = "Detail 2";
+            MachineDataGridView.Columns[3].HeaderText = "Detail 3";
+            MachineDataGridView.Columns[4].HeaderText = "Detail 4";
+            MachineDataGridView.Columns[5].HeaderText = "Detail 5";
+            MachineDataGridView.Columns[6].HeaderText = "Weekly Rate";
+            MachineDataGridView.Columns[7].HeaderText = "Daily Rate";
+
+            // Set column widths to automatically set to the best width for the 
+            // width of the window
+
+            //HirerDataGridView.Columns[2].Width = 
+
+            // Make the Code boxes show some nice autocomplete suggestions
+            HirerCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            HirerCode.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            PlantCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            PlantCode.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             // MOAR WURK HERE !
         }
 

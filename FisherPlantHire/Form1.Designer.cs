@@ -82,6 +82,7 @@
             // 
             // HirerCode
             // 
+            this.HirerCode.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.HirerCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerCode.FormattingEnabled = true;
             this.HirerCode.Location = new System.Drawing.Point(12, 37);
