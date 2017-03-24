@@ -1,5 +1,7 @@
-# Ignore data files
+# Custom
+## Ignore data files
 *.[Cc]sv
+*.dotx
 
 # Created by https://www.gitignore.io/api/visualstudio,windows
 
