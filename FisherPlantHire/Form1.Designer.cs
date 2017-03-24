@@ -530,6 +530,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1115, 766);
             this.Controls.Add(this.Print);
             this.Controls.Add(this.Clear);

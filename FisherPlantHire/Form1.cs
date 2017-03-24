@@ -180,20 +180,40 @@ namespace FisherPlantHire
             SetBookmarkText(wordDoc, "PlantDetail4", PlantDetailLn4.Text);
             SetBookmarkText(wordDoc, "PlantDetail5", PlantDetailLn5.Text);
 
-            // Attempt to print the document and then close it without saving 
-            // the changes (once the document is printed we don't need the 
-            // changes anymore). Then close the MS Word application.
+            // Instantiate and configure the PrintDialog
+            var pd = new PrintDialog();
+            pd.UseEXDialog = true;
+            pd.AllowSomePages = false;
+            pd.AllowSelection = false;
+            pd.AllowCurrentPage = false;
+            pd.AllowPrintToFile = false;
+
+            // Check the response from the PrintDialog
+            if (pd.ShowDialog(this) == DialogResult.OK)
+            {
+                // Attempt to print the document
+                try
+                {
+                    wordApp.ActivePrinter = pd.PrinterSettings.PrinterName;
+                    wordDoc.PrintOut();
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+
+            // Attemt to close the document without saving the changes (once 
+            // the document is printed we don't need it anymore). Then close 
+            // the MS Word application.
             try
             {
-                wordDoc.PrintOut();
                 wordDoc.Close(SaveChanges: false);
-                wordApp.Quit();
+                wordApp.Quit(SaveChanges: false);
             }
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-                wordDoc.Close(SaveChanges: false);
-                wordApp.Quit();
             }
         }
 
@@ -268,6 +288,8 @@ namespace FisherPlantHire
             FileStream fs;
             StreamWriter sw;
 
+            // TODO: Handle the case where the file does not yet exist - we should create  new one.
+
             // Attempt to open the file as a stream and use that to instantiate 
             // a StreamWriter
             try
@@ -308,7 +330,12 @@ namespace FisherPlantHire
 
         private void UpdateHirer_Click(object sender, EventArgs e)
         {
+            // TODO: Change record details
 
+            // TODO: Update file
+
+            // We dont wait until the user "saves", instead the file gets 
+            // updated immediately anytime an operation happens.
         }
 
         private void AddHirer_Click(object sender, EventArgs e)
