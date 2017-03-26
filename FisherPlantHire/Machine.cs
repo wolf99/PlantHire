@@ -34,6 +34,11 @@ namespace FisherPlantHire
         public decimal WeeklyRate { get; set; }
         public decimal DailyRate { get; set; }
 
+        public Machine()
+        {
+            // Empty constructor, default is overloaded by internal Machine() below
+        }
+
         internal Machine(string[] csvFields)
         {
             Field f = Field.Code;

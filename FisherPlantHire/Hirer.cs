@@ -30,6 +30,11 @@ namespace FisherPlantHire
         public string AddressLn4 { get; set; }
         public string AddressLn5 { get; set; }
 
+        public Hirer()
+        {
+            // Empty constructor, default is overloaded by internal Hirer() below
+        }
+
         internal Hirer(string[] csvFields)
         {
             Field f = Field.Code;

@@ -57,6 +57,10 @@ namespace FisherPlantHire
             else
                 Machines.DataSource = new List<Machine>();
 
+            // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
+            //Hirers.Sort = "Code ASC";
+            //Machines.Sort = "Code ASC";
+
             HirerDataGridView.DataSource = Hirers; // Bind form controls to BindingSources
             HirerCode.DataSource = Hirers;
             HirerCode.DisplayMember = "Code";
@@ -79,6 +83,9 @@ namespace FisherPlantHire
             PlantDetailLn5.DataBindings.Add("Text", Machines, "DetailLn5");
             WeeklyRate.DataBindings.Add("Text", Machines, "WeeklyRate");
             DailyRate.DataBindings.Add("Text", Machines, "DailyRate");
+
+            // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
+            //HirerDataGridView.Sort(HirerDataGridView.Columns["Code"], ListSortDirection.Ascending);
 
             // Make the DataGridView column headings nicer
             HirerDataGridView.Columns[2].HeaderText = "Address 1";
@@ -132,6 +139,11 @@ namespace FisherPlantHire
 
             PlantCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             PlantCode.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            // Add handlers for the event raised when adding a new row using 
+            // the "Add" button
+            HirerDataGridView.RowsAdded += DataGridView_RowsAdded;
+            MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
         }
 
         private void Print_Click(object sender, EventArgs e)
@@ -195,6 +207,9 @@ namespace FisherPlantHire
                 try
                 {
                     wordApp.ActivePrinter = pd.PrinterSettings.PrinterName;
+
+                    // TODO: ACTUALLY USE THE PRINTER SETTINGS!
+
                     wordDoc.PrintOut();
                 }
                 catch (Exception error)
@@ -283,7 +298,7 @@ namespace FisherPlantHire
             return list;
         }
 
-        private void UpdateCsvFile(List<Record> records, string path)
+        private void UpdateCsvFile<T>(List<T> records, string path)
         {
             FileStream fs;
             StreamWriter sw;
@@ -308,7 +323,7 @@ namespace FisherPlantHire
             }
 
             // Serialize each record, writing each to the file as a single line
-            foreach (Record r in records)
+            foreach (T r in records)
             {
                 sw.WriteLine(r.ToString());
             }
@@ -328,32 +343,45 @@ namespace FisherPlantHire
             }
         }
 
-        private void UpdateHirer_Click(object sender, EventArgs e)
-        {
-            // TODO: Change record details
-
-            // TODO: Update file
-
-            // We dont wait until the user "saves", instead the file gets 
-            // updated immediately anytime an operation happens.
-        }
-
         private void AddHirer_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void DeleteHirer_Click(object sender, EventArgs e)
-        {
-
+            // Add a new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Hirers.AddNew();
         }
 
         private void AddPlant_Click(object sender, EventArgs e)
         {
+            // Add a new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Machines.AddNew();
+        }
 
+        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // Select the newly added row.
+            // This means the other data bound fields will show the new, empty, 
+            // object details
+            ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
+        }
+
+        private void UpdateHirer_Click(object sender, EventArgs e)
+        {
+            // Update the file
+            // We dont wait until the user "saves", instead the file gets 
+            // updated immediately anytime an operation happens.
+            UpdateCsvFile<Hirer>((List<Hirer>)Hirers.DataSource, HirerCsvPath);
         }
 
         private void UpdatePlant_Click(object sender, EventArgs e)
+        {
+            // Update the file
+            // We dont wait until the user "saves", instead the file gets 
+            // updated immediately anytime an operation happens.
+            UpdateCsvFile<Machine>((List<Machine>)Machines.DataSource, PlantCsvPath);
+        }
+
+        private void DeleteHirer_Click(object sender, EventArgs e)
         {
 
         }
