@@ -144,6 +144,29 @@ namespace FisherPlantHire
             // the "Add" button
             HirerDataGridView.RowsAdded += DataGridView_RowsAdded;
             MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
+
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // This overrides the forms ProcessCmdKey method so that we can
+            // catch certain keyboard shortcuts (WinForms, only normally
+            // supports this type of functionality for specific controls 
+            // otherwise)
+
+            var e = new KeyEventArgs(keyData);
+
+            // Check if the command key combination is 'Ctrl + P'
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                // Run the Print button handler
+                Print_Click(Print, new EventArgs());
+                // Indicate that the command key has been handled
+                return true;
+            }
+
+            // Handle the command key normally, using the overridden method
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void Print_Click(object sender, EventArgs e)
