@@ -231,9 +231,7 @@ namespace FisherPlantHire
                 {
                     wordApp.ActivePrinter = pd.PrinterSettings.PrinterName;
 
-                    // TODO: ACTUALLY USE THE PRINTER SETTINGS!
-
-                    wordDoc.PrintOut();
+                    wordDoc.PrintOut(Copies: pd.PrinterSettings.Copies);
                 }
                 catch (Exception error)
                 {
