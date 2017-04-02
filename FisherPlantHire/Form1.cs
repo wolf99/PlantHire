@@ -48,14 +48,14 @@ namespace FisherPlantHire
 
             // Bind factories to BindingSources
             if (File.Exists(HirerCsvPath))
-                Hirers.DataSource = GetListFromCsvFile<Hirer>(hf, HirerCsvPath);
+                Hirers.DataSource = new BindingList<Hirer>(GetListFromCsvFile<Hirer>(hf, HirerCsvPath));
             else
-                Hirers.DataSource = new List<Hirer>();
+                Hirers.DataSource = new BindingList<Hirer>();
 
             if (File.Exists(PlantCsvPath))
-                Machines.DataSource = GetListFromCsvFile<Machine>(mf, PlantCsvPath);
+                Machines.DataSource = new BindingList<Machine>(GetListFromCsvFile<Machine>(mf, PlantCsvPath));
             else
-                Machines.DataSource = new List<Machine>();
+                Machines.DataSource = new BindingList<Machine>();
 
             // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
             //Hirers.Sort = "Code ASC";
