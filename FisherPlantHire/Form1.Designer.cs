@@ -86,7 +86,7 @@
             this.HirerCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerCode.FormattingEnabled = true;
             this.HirerCode.Location = new System.Drawing.Point(10, 30);
-            this.HirerCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerCode.Margin = new System.Windows.Forms.Padding(2);
             this.HirerCode.Name = "HirerCode";
             this.HirerCode.Size = new System.Drawing.Size(98, 28);
             this.HirerCode.TabIndex = 1;
@@ -97,7 +97,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HirerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.HirerDataGridView.Location = new System.Drawing.Point(466, 7);
-            this.HirerDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.HirerDataGridView.Name = "HirerDataGridView";
             this.HirerDataGridView.RowTemplate.Height = 24;
             this.HirerDataGridView.Size = new System.Drawing.Size(418, 298);
@@ -141,7 +141,7 @@
             // 
             this.HirerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerName.Location = new System.Drawing.Point(10, 86);
-            this.HirerName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerName.Margin = new System.Windows.Forms.Padding(2);
             this.HirerName.Name = "HirerName";
             this.HirerName.Size = new System.Drawing.Size(173, 26);
             this.HirerName.TabIndex = 3;
@@ -151,7 +151,7 @@
             // 
             this.HirerAddressLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn1.Location = new System.Drawing.Point(10, 134);
-            this.HirerAddressLn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerAddressLn1.Margin = new System.Windows.Forms.Padding(2);
             this.HirerAddressLn1.Name = "HirerAddressLn1";
             this.HirerAddressLn1.Size = new System.Drawing.Size(173, 26);
             this.HirerAddressLn1.TabIndex = 5;
@@ -160,7 +160,7 @@
             // 
             this.HirerAddressLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn2.Location = new System.Drawing.Point(10, 163);
-            this.HirerAddressLn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerAddressLn2.Margin = new System.Windows.Forms.Padding(2);
             this.HirerAddressLn2.Name = "HirerAddressLn2";
             this.HirerAddressLn2.Size = new System.Drawing.Size(173, 26);
             this.HirerAddressLn2.TabIndex = 6;
@@ -169,7 +169,7 @@
             // 
             this.HirerAddressLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn3.Location = new System.Drawing.Point(10, 192);
-            this.HirerAddressLn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerAddressLn3.Margin = new System.Windows.Forms.Padding(2);
             this.HirerAddressLn3.Name = "HirerAddressLn3";
             this.HirerAddressLn3.Size = new System.Drawing.Size(173, 26);
             this.HirerAddressLn3.TabIndex = 7;
@@ -178,7 +178,7 @@
             // 
             this.HirerAddressLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn4.Location = new System.Drawing.Point(10, 221);
-            this.HirerAddressLn4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerAddressLn4.Margin = new System.Windows.Forms.Padding(2);
             this.HirerAddressLn4.Name = "HirerAddressLn4";
             this.HirerAddressLn4.Size = new System.Drawing.Size(173, 26);
             this.HirerAddressLn4.TabIndex = 8;
@@ -187,7 +187,7 @@
             // 
             this.HirerAddressLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn5.Location = new System.Drawing.Point(10, 250);
-            this.HirerAddressLn5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.HirerAddressLn5.Margin = new System.Windows.Forms.Padding(2);
             this.HirerAddressLn5.Name = "HirerAddressLn5";
             this.HirerAddressLn5.Size = new System.Drawing.Size(173, 26);
             this.HirerAddressLn5.TabIndex = 9;
@@ -218,7 +218,7 @@
             // 
             this.SiteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteName.Location = new System.Drawing.Point(289, 86);
-            this.SiteName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteName.Margin = new System.Windows.Forms.Padding(2);
             this.SiteName.Name = "SiteName";
             this.SiteName.Size = new System.Drawing.Size(173, 26);
             this.SiteName.TabIndex = 11;
@@ -227,7 +227,7 @@
             // 
             this.SiteAddressLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn1.Location = new System.Drawing.Point(289, 134);
-            this.SiteAddressLn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteAddressLn1.Margin = new System.Windows.Forms.Padding(2);
             this.SiteAddressLn1.Name = "SiteAddressLn1";
             this.SiteAddressLn1.Size = new System.Drawing.Size(173, 26);
             this.SiteAddressLn1.TabIndex = 13;
@@ -236,7 +236,7 @@
             // 
             this.SiteAddressLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn2.Location = new System.Drawing.Point(289, 163);
-            this.SiteAddressLn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteAddressLn2.Margin = new System.Windows.Forms.Padding(2);
             this.SiteAddressLn2.Name = "SiteAddressLn2";
             this.SiteAddressLn2.Size = new System.Drawing.Size(173, 26);
             this.SiteAddressLn2.TabIndex = 14;
@@ -245,7 +245,7 @@
             // 
             this.SiteAddressLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn3.Location = new System.Drawing.Point(289, 192);
-            this.SiteAddressLn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteAddressLn3.Margin = new System.Windows.Forms.Padding(2);
             this.SiteAddressLn3.Name = "SiteAddressLn3";
             this.SiteAddressLn3.Size = new System.Drawing.Size(173, 26);
             this.SiteAddressLn3.TabIndex = 15;
@@ -254,7 +254,7 @@
             // 
             this.SiteAddressLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn4.Location = new System.Drawing.Point(289, 221);
-            this.SiteAddressLn4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteAddressLn4.Margin = new System.Windows.Forms.Padding(2);
             this.SiteAddressLn4.Name = "SiteAddressLn4";
             this.SiteAddressLn4.Size = new System.Drawing.Size(173, 26);
             this.SiteAddressLn4.TabIndex = 16;
@@ -263,7 +263,7 @@
             // 
             this.SiteAddressLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn5.Location = new System.Drawing.Point(289, 250);
-            this.SiteAddressLn5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.SiteAddressLn5.Margin = new System.Windows.Forms.Padding(2);
             this.SiteAddressLn5.Name = "SiteAddressLn5";
             this.SiteAddressLn5.Size = new System.Drawing.Size(173, 26);
             this.SiteAddressLn5.TabIndex = 17;
@@ -273,7 +273,7 @@
             this.PlantCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantCode.FormattingEnabled = true;
             this.PlantCode.Location = new System.Drawing.Point(10, 346);
-            this.PlantCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantCode.Margin = new System.Windows.Forms.Padding(2);
             this.PlantCode.Name = "PlantCode";
             this.PlantCode.Size = new System.Drawing.Size(98, 28);
             this.PlantCode.TabIndex = 23;
@@ -282,7 +282,7 @@
             // 
             this.PlantDetailLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn1.Location = new System.Drawing.Point(10, 402);
-            this.PlantDetailLn1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantDetailLn1.Margin = new System.Windows.Forms.Padding(2);
             this.PlantDetailLn1.Name = "PlantDetailLn1";
             this.PlantDetailLn1.Size = new System.Drawing.Size(173, 26);
             this.PlantDetailLn1.TabIndex = 25;
@@ -291,7 +291,7 @@
             // 
             this.PlantDetailLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn2.Location = new System.Drawing.Point(10, 431);
-            this.PlantDetailLn2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantDetailLn2.Margin = new System.Windows.Forms.Padding(2);
             this.PlantDetailLn2.Name = "PlantDetailLn2";
             this.PlantDetailLn2.Size = new System.Drawing.Size(173, 26);
             this.PlantDetailLn2.TabIndex = 26;
@@ -300,7 +300,7 @@
             // 
             this.PlantDetailLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn3.Location = new System.Drawing.Point(10, 460);
-            this.PlantDetailLn3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantDetailLn3.Margin = new System.Windows.Forms.Padding(2);
             this.PlantDetailLn3.Name = "PlantDetailLn3";
             this.PlantDetailLn3.Size = new System.Drawing.Size(173, 26);
             this.PlantDetailLn3.TabIndex = 27;
@@ -309,7 +309,7 @@
             // 
             this.PlantDetailLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn4.Location = new System.Drawing.Point(10, 489);
-            this.PlantDetailLn4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantDetailLn4.Margin = new System.Windows.Forms.Padding(2);
             this.PlantDetailLn4.Name = "PlantDetailLn4";
             this.PlantDetailLn4.Size = new System.Drawing.Size(173, 26);
             this.PlantDetailLn4.TabIndex = 28;
@@ -318,7 +318,7 @@
             // 
             this.PlantDetailLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn5.Location = new System.Drawing.Point(10, 518);
-            this.PlantDetailLn5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PlantDetailLn5.Margin = new System.Windows.Forms.Padding(2);
             this.PlantDetailLn5.Name = "PlantDetailLn5";
             this.PlantDetailLn5.Size = new System.Drawing.Size(173, 26);
             this.PlantDetailLn5.TabIndex = 29;
@@ -415,7 +415,7 @@
             // 
             this.WeeklyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WeeklyRate.Location = new System.Drawing.Point(354, 374);
-            this.WeeklyRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WeeklyRate.Margin = new System.Windows.Forms.Padding(2);
             this.WeeklyRate.Name = "WeeklyRate";
             this.WeeklyRate.Size = new System.Drawing.Size(107, 26);
             this.WeeklyRate.TabIndex = 31;
@@ -424,7 +424,7 @@
             // 
             this.DailyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DailyRate.Location = new System.Drawing.Point(354, 402);
-            this.DailyRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DailyRate.Margin = new System.Windows.Forms.Padding(2);
             this.DailyRate.Name = "DailyRate";
             this.DailyRate.Size = new System.Drawing.Size(107, 26);
             this.DailyRate.TabIndex = 33;
@@ -433,7 +433,7 @@
             // 
             this.DeliveryRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeliveryRate.Location = new System.Drawing.Point(354, 431);
-            this.DeliveryRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeliveryRate.Margin = new System.Windows.Forms.Padding(2);
             this.DeliveryRate.Name = "DeliveryRate";
             this.DeliveryRate.Size = new System.Drawing.Size(107, 26);
             this.DeliveryRate.TabIndex = 35;
@@ -442,7 +442,7 @@
             // 
             this.CollectRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CollectRate.Location = new System.Drawing.Point(354, 460);
-            this.CollectRate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CollectRate.Margin = new System.Windows.Forms.Padding(2);
             this.CollectRate.Name = "CollectRate";
             this.CollectRate.Size = new System.Drawing.Size(107, 26);
             this.CollectRate.TabIndex = 37;
@@ -451,7 +451,7 @@
             // 
             this.OrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OrderNumber.Location = new System.Drawing.Point(354, 489);
-            this.OrderNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OrderNumber.Margin = new System.Windows.Forms.Padding(2);
             this.OrderNumber.Name = "OrderNumber";
             this.OrderNumber.Size = new System.Drawing.Size(107, 26);
             this.OrderNumber.TabIndex = 39;
@@ -461,7 +461,7 @@
             this.CommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CommencementDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.CommencementDate.Location = new System.Drawing.Point(354, 518);
-            this.CommencementDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CommencementDate.Margin = new System.Windows.Forms.Padding(2);
             this.CommencementDate.Name = "CommencementDate";
             this.CommencementDate.Size = new System.Drawing.Size(107, 26);
             this.CommencementDate.TabIndex = 41;
@@ -472,7 +472,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MachineDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MachineDataGridView.Location = new System.Drawing.Point(466, 310);
-            this.MachineDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MachineDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.MachineDataGridView.Name = "MachineDataGridView";
             this.MachineDataGridView.RowTemplate.Height = 24;
             this.MachineDataGridView.Size = new System.Drawing.Size(418, 294);
@@ -483,7 +483,7 @@
             // 
             this.AddHirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddHirer.Location = new System.Drawing.Point(203, 278);
-            this.AddHirer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddHirer.Margin = new System.Windows.Forms.Padding(2);
             this.AddHirer.Name = "AddHirer";
             this.AddHirer.Size = new System.Drawing.Size(91, 26);
             this.AddHirer.TabIndex = 19;
@@ -495,7 +495,7 @@
             // 
             this.UpdateHirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateHirer.Location = new System.Drawing.Point(299, 278);
-            this.UpdateHirer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UpdateHirer.Margin = new System.Windows.Forms.Padding(2);
             this.UpdateHirer.Name = "UpdateHirer";
             this.UpdateHirer.Size = new System.Drawing.Size(78, 26);
             this.UpdateHirer.TabIndex = 20;
@@ -507,7 +507,7 @@
             // 
             this.DeleteHirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteHirer.Location = new System.Drawing.Point(382, 278);
-            this.DeleteHirer.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteHirer.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteHirer.Name = "DeleteHirer";
             this.DeleteHirer.Size = new System.Drawing.Size(78, 26);
             this.DeleteHirer.TabIndex = 21;
@@ -519,7 +519,7 @@
             // 
             this.AddPlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddPlant.Location = new System.Drawing.Point(202, 546);
-            this.AddPlant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddPlant.Margin = new System.Windows.Forms.Padding(2);
             this.AddPlant.Name = "AddPlant";
             this.AddPlant.Size = new System.Drawing.Size(91, 26);
             this.AddPlant.TabIndex = 43;
@@ -531,7 +531,7 @@
             // 
             this.UpdatePlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatePlant.Location = new System.Drawing.Point(298, 546);
-            this.UpdatePlant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.UpdatePlant.Margin = new System.Windows.Forms.Padding(2);
             this.UpdatePlant.Name = "UpdatePlant";
             this.UpdatePlant.Size = new System.Drawing.Size(78, 26);
             this.UpdatePlant.TabIndex = 44;
@@ -543,7 +543,7 @@
             // 
             this.DeletePlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeletePlant.Location = new System.Drawing.Point(382, 546);
-            this.DeletePlant.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeletePlant.Margin = new System.Windows.Forms.Padding(2);
             this.DeletePlant.Name = "DeletePlant";
             this.DeletePlant.Size = new System.Drawing.Size(78, 26);
             this.DeletePlant.TabIndex = 45;
@@ -555,7 +555,7 @@
             // 
             this.Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Clear.Location = new System.Drawing.Point(10, 578);
-            this.Clear.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Clear.Margin = new System.Windows.Forms.Padding(2);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(60, 26);
             this.Clear.TabIndex = 46;
@@ -566,7 +566,7 @@
             // 
             this.Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print.Location = new System.Drawing.Point(74, 578);
-            this.Print.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Print.Margin = new System.Windows.Forms.Padding(2);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(60, 26);
             this.Print.TabIndex = 47;
@@ -627,9 +627,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HirerDataGridView);
             this.Controls.Add(this.HirerCode);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Fisher Plant HIre";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).EndInit();

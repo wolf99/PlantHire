@@ -15,6 +15,9 @@ namespace FisherPlantHire
 {
     public partial class Form1 : Form
     {
+        private Word.Application wordApp = null;
+        private Word.Document wordDoc = null;
+
         private BindingSource Hirers = new BindingSource(); // Create BindingSources
         private BindingSource Machines = new BindingSource();
         private String HirerCsvPath;
@@ -35,16 +38,8 @@ namespace FisherPlantHire
             HirerCsvPath = Path.GetFullPath(Properties.Resources.HirerCsvPath);
             PlantCsvPath = Path.GetFullPath(Properties.Resources.PlantCsvPath);
 
-            // Check template exists
-            if (!File.Exists(ContractTemplatePath))
-            {
-                string message = string.Format("Cant find: {0}\nWill not be able to print or save contract", ContractTemplatePath);
-                var response = MessageBox.Show(message, "Cannot find contract template", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                if (response == DialogResult.Cancel)
-                {
-                    Environment.Exit(0);
-                }
-            }
+            // Open MS Word template ready for use
+            OpenTemplate(ContractTemplatePath);
 
             // Bind factories to BindingSources
             if (File.Exists(HirerCsvPath))
@@ -171,22 +166,6 @@ namespace FisherPlantHire
 
         private void Print_Click(object sender, EventArgs e)
         {
-            // Open the MS Word application via Office Interop
-            Word.Application wordApp = new Word.Application();
-            Word.Document wordDoc;
-
-            // Attempt to open the template
-            try
-            {
-                wordDoc = wordApp.Documents.Add(Template: ContractTemplatePath, Visible: false);
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                wordApp.Quit();
-                return;
-            }
-
             // Ensure the opened document is the currently active one
             wordDoc.Activate();
 
@@ -230,7 +209,6 @@ namespace FisherPlantHire
                 try
                 {
                     wordApp.ActivePrinter = pd.PrinterSettings.PrinterName;
-
                     wordDoc.PrintOut(Copies: pd.PrinterSettings.Copies);
                 }
                 catch (Exception error)
@@ -238,18 +216,128 @@ namespace FisherPlantHire
                     MessageBox.Show(error.Message);
                 }
             }
+        }
 
-            // Attemt to close the document without saving the changes (once 
-            // the document is printed we don't need it anymore). Then close 
-            // the MS Word application.
+        private void AddHirer_Click(object sender, EventArgs e)
+        {
+            // Add a new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Hirers.AddNew();
+        }
+
+        private void AddPlant_Click(object sender, EventArgs e)
+        {
+            // Add a new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Machines.AddNew();
+        }
+
+        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // Select the newly added row.
+            // This means the other data bound fields will show the new, empty, 
+            // object details
+            ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
+        }
+
+        private void UpdateHirer_Click(object sender, EventArgs e)
+        {
+            // Update the file
+            // We dont wait until the user "saves", instead the file gets 
+            // updated immediately anytime an operation happens.
+            UpdateCsvFile<Hirer>((List<Hirer>)Hirers.DataSource, HirerCsvPath);
+        }
+
+        private void UpdatePlant_Click(object sender, EventArgs e)
+        {
+            // Update the file
+            // We dont wait until the user "saves", instead the file gets 
+            // updated immediately anytime an operation happens.
+            UpdateCsvFile<Machine>((List<Machine>)Machines.DataSource, PlantCsvPath);
+        }
+
+        private void DeleteHirer_Click(object sender, EventArgs e)
+        {
+            // TODO : Implement delete hirer
+        }
+
+        private void DeletePlant_Click(object sender, EventArgs e)
+        {
+            // TODO : Implement delete plant
+        }
+        
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CloseTemplate();
+        }
+
+        private void OpenTemplate(string path)
+        {
+            // Check MS Word dotx template exists
+            if (!File.Exists(path))
+            {
+                string message = string.Format("Cant find: {0}\nWill not be able to print or save contract", path);
+                var response = MessageBox.Show(message, "Cannot find contract template", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                if (response == DialogResult.Cancel)
+                {
+                    Environment.Exit(0);
+                }
+            }
+
             try
             {
-                wordDoc.Close(SaveChanges: false);
-                wordApp.Quit(SaveChanges: false);
+                // Attempt to open the MS Word application via Office Interop
+                wordApp = new Word.Application();
             }
             catch (Exception error)
             {
-                MessageBox.Show(error.Message);
+                MessageBox.Show("Could not open MS Word via Interop\n" + error.Message);
+                wordApp = null;
+                return;
+            }
+
+            try
+            {
+                // Attempt to open the template document in MS Word invisibly
+                wordDoc = wordApp.Documents.Add(Template: path, Visible: false);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show("Could not open MS Word template document\n" + error.Message);
+                wordApp.Quit();
+                wordDoc = null;
+                wordApp = null;
+                return;
+            }
+        }
+
+        private void CloseTemplate()
+        {
+            if (wordDoc != null)
+            {
+                // Attempt to close the MS Word dotx template file without
+                // saving any changes. Then close the MS Word application.
+                try
+                {
+                    wordDoc.Close(SaveChanges: false);
+                    wordApp.Quit(SaveChanges: false);
+                    wordDoc = null;
+                    wordApp = null;
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message);
+                }
+            }
+        }
+
+        private void SetBookmarkText(Word.Document document, string bookmark, string text)
+        {
+            // Check bookmark exists
+            if (document.Bookmarks.Exists(bookmark))
+            {
+                // Set bookmark text
+                document.Bookmarks[bookmark].Range.Text = text;
             }
         }
 
@@ -352,64 +440,6 @@ namespace FisherPlantHire
             // Close the StreamWriter and then the file stream (clsoes the file)
             sw.Close();
             fs.Close();
-        }
-
-        private void SetBookmarkText(Word.Document document, string bookmark, string text)
-        {
-            // Check bookmark exists
-            if (document.Bookmarks.Exists(bookmark)) 
-            {
-                // Set bookmark text
-                document.Bookmarks[bookmark].Range.Text = text; 
-            }
-        }
-
-        private void AddHirer_Click(object sender, EventArgs e)
-        {
-            // Add a new object to the Binding source
-            // This causes the RowsAdded event to be raised
-            Hirers.AddNew();
-        }
-
-        private void AddPlant_Click(object sender, EventArgs e)
-        {
-            // Add a new object to the Binding source
-            // This causes the RowsAdded event to be raised
-            Machines.AddNew();
-        }
-
-        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            // Select the newly added row.
-            // This means the other data bound fields will show the new, empty, 
-            // object details
-            ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
-        }
-
-        private void UpdateHirer_Click(object sender, EventArgs e)
-        {
-            // Update the file
-            // We dont wait until the user "saves", instead the file gets 
-            // updated immediately anytime an operation happens.
-            UpdateCsvFile<Hirer>((List<Hirer>)Hirers.DataSource, HirerCsvPath);
-        }
-
-        private void UpdatePlant_Click(object sender, EventArgs e)
-        {
-            // Update the file
-            // We dont wait until the user "saves", instead the file gets 
-            // updated immediately anytime an operation happens.
-            UpdateCsvFile<Machine>((List<Machine>)Machines.DataSource, PlantCsvPath);
-        }
-
-        private void DeleteHirer_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DeletePlant_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
