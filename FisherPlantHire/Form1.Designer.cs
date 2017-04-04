@@ -630,7 +630,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Fisher Plant HIre";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).EndInit();

@@ -38,9 +38,6 @@ namespace FisherPlantHire
             HirerCsvPath = Path.GetFullPath(Properties.Resources.HirerCsvPath);
             PlantCsvPath = Path.GetFullPath(Properties.Resources.PlantCsvPath);
 
-            // Open MS Word template ready for use
-            OpenTemplate(ContractTemplatePath);
-
             // Bind factories to BindingSources
             if (File.Exists(HirerCsvPath))
                 Hirers.DataSource = new BindingList<Hirer>(GetListFromCsvFile<Hirer>(hf, HirerCsvPath));
@@ -166,6 +163,9 @@ namespace FisherPlantHire
 
         private void Print_Click(object sender, EventArgs e)
         {
+            // Open MS Word template ready for use
+            OpenTemplate(ContractTemplatePath);
+
             // Ensure the opened document is the currently active one
             wordDoc.Activate();
 
@@ -216,6 +216,23 @@ namespace FisherPlantHire
                     MessageBox.Show(error.Message);
                 }
             }
+
+            // Change the cursor to indicate the application is busy
+            Cursor.Current = Cursors.WaitCursor;
+
+            // Wait until the printing is done
+            while (wordApp.BackgroundPrintingStatus != 0)
+            {
+                Application.DoEvents();
+                Application.DoEvents();
+            }
+
+            // Revert the cursor to normal
+            Cursor.Current = Cursors.Default;
+
+
+            // Close the MS Word template document, discarding any changes
+            CloseTemplate();
         }
 
         private void AddHirer_Click(object sender, EventArgs e)
@@ -263,12 +280,7 @@ namespace FisherPlantHire
 
         private void DeletePlant_Click(object sender, EventArgs e)
         {
-            // TODO : Implement delete plant
-        }
-        
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseTemplate();
+            // TODO : Implement del5ete plant
         }
 
         private void OpenTemplate(string path)
