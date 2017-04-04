@@ -54,27 +54,14 @@ namespace FisherPlantHire
             //Machines.Sort = "Code ASC";
 
             HirerDataGridView.DataSource = Hirers; // Bind form controls to BindingSources
-            //HirerCode.DataSource = Hirers;
-            //HirerCode.DisplayMember = "Code";
-            //HirerCode.ValueMember = "Code";
-            //HirerName.DataBindings.Add("Text", Hirers, "Name");
-            //HirerAddressLn1.DataBindings.Add("Text", Hirers, "AddressLn1");
-            //HirerAddressLn2.DataBindings.Add("Text", Hirers, "AddressLn2");
-            //HirerAddressLn3.DataBindings.Add("Text", Hirers, "AddressLn3");
-            //HirerAddressLn4.DataBindings.Add("Text", Hirers, "AddressLn4");
-            //HirerAddressLn5.DataBindings.Add("Text", Hirers, "AddressLn5");
+            HirerCode.DataSource = Hirers;
+            HirerCode.DisplayMember = "Code";
+            HirerCode.ValueMember = "Code";
 
             MachineDataGridView.DataSource = Machines;
-            //PlantCode.DataSource = Machines;
-            //PlantCode.DisplayMember = "Code";
-            //PlantCode.ValueMember = "Code";
-            //PlantDetailLn1.DataBindings.Add("Text", Machines, "DetailLn1");
-            //PlantDetailLn2.DataBindings.Add("Text", Machines, "DetailLn2");
-            //PlantDetailLn3.DataBindings.Add("Text", Machines, "DetailLn3");
-            //PlantDetailLn4.DataBindings.Add("Text", Machines, "DetailLn4");
-            //PlantDetailLn5.DataBindings.Add("Text", Machines, "DetailLn5");
-            //WeeklyRate.DataBindings.Add("Text", Machines, "WeeklyRate");
-            //DailyRate.DataBindings.Add("Text", Machines, "DailyRate");
+            PlantCode.DataSource = Machines;
+            PlantCode.DisplayMember = "Code";
+            PlantCode.ValueMember = "Code";
 
             // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
             //HirerDataGridView.Sort(HirerDataGridView.Columns["Code"], ListSortDirection.Ascending);
