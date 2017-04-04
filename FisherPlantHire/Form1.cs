@@ -255,23 +255,52 @@ namespace FisherPlantHire
 
         private void AddHirer_Click(object sender, EventArgs e)
         {
-            // Add a new object to the Binding source
+            // Create and populate a new Hirer object
+            var h = new Hirer()
+            {
+                Code = HirerCode.Text,
+                Name = HirerName.Text,
+                AddressLn1 = HirerAddressLn1.Text,
+                AddressLn2 = HirerAddressLn2.Text,
+                AddressLn3 = HirerAddressLn3.Text,
+                AddressLn4 = HirerAddressLn4.Text,
+                AddressLn5 = HirerAddressLn5.Text,
+            };
+
+            // Add the new object to the Binding source
             // This causes the RowsAdded event to be raised
-            Hirers.AddNew();
+            Hirers.Add(h);
+            // Save the change to file
+            UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
         }
 
         private void AddPlant_Click(object sender, EventArgs e)
         {
-            // Add a new object to the Binding source
+            // Create and populate a new Machine object
+            var m = new Machine()
+            {
+                Code = HirerCode.Text,
+                DetailLn1 = PlantDetailLn1.Text,
+                DetailLn2 = PlantDetailLn2.Text,
+                DetailLn3 = PlantDetailLn3.Text,
+                DetailLn4 = PlantDetailLn4.Text,
+                DetailLn5 = PlantDetailLn5.Text,
+                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
+                DailyRate = Decimal.Parse(DailyRate.Text)
+            };
+
+            // Add the new object to the Binding source
             // This causes the RowsAdded event to be raised
-            Machines.AddNew();
+            Machines.Add(m);
+            // Save the change to file
+            UpdateCsvFile<Machine>(((BindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
         }
 
         private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             // Select the newly added row.
-            // This means the other data bound fields will show the new, empty, 
-            // object details
+            // This means the other data bound fields will show the new object
+            // details
             ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
         }
 
@@ -441,6 +470,9 @@ namespace FisherPlantHire
         {
             FileStream fs;
             StreamWriter sw;
+
+            if (records.Count == 0)
+                return;
 
             // TODO: Handle the case where the file does not yet exist - we should create  new one.
 
