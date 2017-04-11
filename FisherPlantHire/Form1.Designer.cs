@@ -93,14 +93,20 @@
             // 
             // HirerDataGridView
             // 
+            this.HirerDataGridView.AllowUserToAddRows = false;
+            this.HirerDataGridView.AllowUserToDeleteRows = false;
             this.HirerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HirerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HirerDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.HirerDataGridView.Location = new System.Drawing.Point(582, 9);
             this.HirerDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.HirerDataGridView.Name = "HirerDataGridView";
+            this.HirerDataGridView.ReadOnly = true;
+            this.HirerDataGridView.RowHeadersVisible = false;
             this.HirerDataGridView.RowTemplate.Height = 24;
             this.HirerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.HirerDataGridView.ShowEditingIcon = false;
             this.HirerDataGridView.Size = new System.Drawing.Size(522, 372);
             this.HirerDataGridView.TabIndex = 18;
             this.HirerDataGridView.TabStop = false;
@@ -470,12 +476,17 @@
             // 
             // MachineDataGridView
             // 
+            this.MachineDataGridView.AllowUserToAddRows = false;
+            this.MachineDataGridView.AllowUserToDeleteRows = false;
             this.MachineDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MachineDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MachineDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.MachineDataGridView.Location = new System.Drawing.Point(582, 388);
             this.MachineDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.MachineDataGridView.Name = "MachineDataGridView";
+            this.MachineDataGridView.ReadOnly = true;
+            this.MachineDataGridView.RowHeadersVisible = false;
             this.MachineDataGridView.RowTemplate.Height = 24;
             this.MachineDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.MachineDataGridView.Size = new System.Drawing.Size(522, 368);

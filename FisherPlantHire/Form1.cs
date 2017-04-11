@@ -179,6 +179,134 @@ namespace FisherPlantHire
             }
         }
 
+        private void AddHirer_Click(object sender, EventArgs e)
+        {
+            // Create and populate a new Hirer object
+            var h = new Hirer()
+            {
+                Code = HirerCode.Text,
+                Name = HirerName.Text,
+                AddressLn1 = HirerAddressLn1.Text,
+                AddressLn2 = HirerAddressLn2.Text,
+                AddressLn3 = HirerAddressLn3.Text,
+                AddressLn4 = HirerAddressLn4.Text,
+                AddressLn5 = HirerAddressLn5.Text,
+            };
+
+            // Add the new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Hirers.Add(h);
+            // Save the change to file
+            UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+        }
+
+        private void AddPlant_Click(object sender, EventArgs e)
+        {
+            // Create and populate a new Machine object
+            var m = new Machine()
+            {
+                Code = HirerCode.Text,
+                DetailLn1 = PlantDetailLn1.Text,
+                DetailLn2 = PlantDetailLn2.Text,
+                DetailLn3 = PlantDetailLn3.Text,
+                DetailLn4 = PlantDetailLn4.Text,
+                DetailLn5 = PlantDetailLn5.Text,
+                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
+                DailyRate = Decimal.Parse(DailyRate.Text)
+            };
+
+            // Add the new object to the Binding source
+            // This causes the RowsAdded event to be raised
+            Machines.Add(m);
+            // Save the change to file
+            UpdateCsvFile<Machine>(((BindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
+        }
+
+        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // De-select any currently selected rows
+            foreach (DataGridViewRow Row in ((DataGridView)sender).SelectedRows)
+            {
+                Row.Selected = false;
+            }
+            // Select the newly added row.
+            // This means the other fields will show the new object details
+            ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
+        }
+
+        private void UpdateHirer_Click(object sender, EventArgs e)
+        {
+            // Create and populate a new Hirer object
+            var h = new Hirer()
+            {
+                Code = HirerCode.Text,
+                Name = HirerName.Text,
+                AddressLn1 = HirerAddressLn1.Text,
+                AddressLn2 = HirerAddressLn2.Text,
+                AddressLn3 = HirerAddressLn3.Text,
+                AddressLn4 = HirerAddressLn4.Text,
+                AddressLn5 = HirerAddressLn5.Text
+            };
+
+            // Get indes of selected item to update
+            var i = HirerDataGridView.SelectedRows[0].Index;
+
+            // Update the item on the binding source
+            var l = (BindingList<Hirer>)Hirers.DataSource;
+            l[i] = h;
+            Hirers.DataSource = l;
+
+            // Save the changes to file
+            UpdateCsvFile<Hirer>(l.ToList(), HirerCsvPath);
+        }
+
+        private void UpdatePlant_Click(object sender, EventArgs e)
+        {
+            // Create and populate a new Machine object
+            var m = new Machine()
+            {
+                Code = PlantCode.Text,
+                DetailLn1 = PlantDetailLn1.Text,
+                DetailLn2 = PlantDetailLn2.Text,
+                DetailLn3 = PlantDetailLn3.Text,
+                DetailLn4 = PlantDetailLn4.Text,
+                DetailLn5 = PlantDetailLn5.Text,
+                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
+                DailyRate = Decimal.Parse(DailyRate.Text)
+            };
+
+            // Get index of selected item to update
+            var i = MachineDataGridView.SelectedRows[0].Index;
+
+            // Update the item on the binding source
+            var l = (BindingList<Machine>)Machines.DataSource;
+            l[i] = m;
+            Machines.DataSource = l;
+
+            // Save the change to file
+            UpdateCsvFile<Machine>(l.ToList(), PlantCsvPath);
+        }
+
+        private void DeleteHirer_Click(object sender, EventArgs e)
+        {
+            // TODO: Implement hirer delete
+            //// Remove the item from the binding source
+            //Hirers.RemoveCurrent();
+
+            //// Save the change to file
+            //UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+        }
+
+        private void DeletePlant_Click(object sender, EventArgs e)
+        {
+            // TODO: Implement plant delete
+            //// Remove the item from the binding source
+            //Hirers.RemoveCurrent();
+
+            //// Save the change to file
+            //UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+        }
+
         private void Print_Click(object sender, EventArgs e)
         {
             // Open MS Word template ready for use
@@ -251,83 +379,6 @@ namespace FisherPlantHire
 
             // Close the MS Word template document, discarding any changes
             CloseTemplate();
-        }
-
-        private void AddHirer_Click(object sender, EventArgs e)
-        {
-            // Create and populate a new Hirer object
-            var h = new Hirer()
-            {
-                Code = HirerCode.Text,
-                Name = HirerName.Text,
-                AddressLn1 = HirerAddressLn1.Text,
-                AddressLn2 = HirerAddressLn2.Text,
-                AddressLn3 = HirerAddressLn3.Text,
-                AddressLn4 = HirerAddressLn4.Text,
-                AddressLn5 = HirerAddressLn5.Text,
-            };
-
-            // Add the new object to the Binding source
-            // This causes the RowsAdded event to be raised
-            Hirers.Add(h);
-            // Save the change to file
-            UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
-        }
-
-        private void AddPlant_Click(object sender, EventArgs e)
-        {
-            // Create and populate a new Machine object
-            var m = new Machine()
-            {
-                Code = HirerCode.Text,
-                DetailLn1 = PlantDetailLn1.Text,
-                DetailLn2 = PlantDetailLn2.Text,
-                DetailLn3 = PlantDetailLn3.Text,
-                DetailLn4 = PlantDetailLn4.Text,
-                DetailLn5 = PlantDetailLn5.Text,
-                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
-                DailyRate = Decimal.Parse(DailyRate.Text)
-            };
-
-            // Add the new object to the Binding source
-            // This causes the RowsAdded event to be raised
-            Machines.Add(m);
-            // Save the change to file
-            UpdateCsvFile<Machine>(((BindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
-        }
-
-        private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            // Select the newly added row.
-            // This means the other data bound fields will show the new object
-            // details
-            ((DataGridView)sender).Rows[e.RowIndex].Selected = true;
-        }
-
-        private void UpdateHirer_Click(object sender, EventArgs e)
-        {
-            // Update the file
-            // We dont wait until the user "saves", instead the file gets 
-            // updated immediately anytime an operation happens.
-            UpdateCsvFile<Hirer>((List<Hirer>)Hirers.DataSource, HirerCsvPath);
-        }
-
-        private void UpdatePlant_Click(object sender, EventArgs e)
-        {
-            // Update the file
-            // We dont wait until the user "saves", instead the file gets 
-            // updated immediately anytime an operation happens.
-            UpdateCsvFile<Machine>((List<Machine>)Machines.DataSource, PlantCsvPath);
-        }
-
-        private void DeleteHirer_Click(object sender, EventArgs e)
-        {
-            // TODO : Implement delete hirer
-        }
-
-        private void DeletePlant_Click(object sender, EventArgs e)
-        {
-            // TODO : Implement delete plant
         }
 
         private void OpenTemplate(string path)
