@@ -40,14 +40,14 @@ namespace FisherPlantHire
 
             // Bind factories to BindingSources
             if (File.Exists(HirerCsvPath))
-                Hirers.DataSource = new BindingList<Hirer>(GetListFromCsvFile<Hirer>(hf, HirerCsvPath));
+                Hirers.DataSource = new SortableBindingList<Hirer>(GetListFromCsvFile<Hirer>(hf, HirerCsvPath));
             else
-                Hirers.DataSource = new BindingList<Hirer>();
+                Hirers.DataSource = new SortableBindingList<Hirer>();
 
             if (File.Exists(PlantCsvPath))
-                Machines.DataSource = new BindingList<Machine>(GetListFromCsvFile<Machine>(mf, PlantCsvPath));
+                Machines.DataSource = new SortableBindingList<Machine>(GetListFromCsvFile<Machine>(mf, PlantCsvPath));
             else
-                Machines.DataSource = new BindingList<Machine>();
+                Machines.DataSource = new SortableBindingList<Machine>();
 
             // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
             //Hirers.Sort = "Code ASC";
@@ -197,7 +197,7 @@ namespace FisherPlantHire
             // This causes the RowsAdded event to be raised
             Hirers.Add(h);
             // Save the change to file
-            UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
         }
 
         private void AddPlant_Click(object sender, EventArgs e)
@@ -219,7 +219,7 @@ namespace FisherPlantHire
             // This causes the RowsAdded event to be raised
             Machines.Add(m);
             // Save the change to file
-            UpdateCsvFile<Machine>(((BindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
+            UpdateCsvFile<Machine>(((SortableBindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
         }
 
         private void DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -252,7 +252,7 @@ namespace FisherPlantHire
             var i = HirerDataGridView.SelectedRows[0].Index;
 
             // Update the item on the binding source
-            var l = (BindingList<Hirer>)Hirers.DataSource;
+            var l = (SortableBindingList<Hirer>)Hirers.DataSource;
             l[i] = h;
             Hirers.DataSource = l;
 
@@ -279,7 +279,7 @@ namespace FisherPlantHire
             var i = MachineDataGridView.SelectedRows[0].Index;
 
             // Update the item on the binding source
-            var l = (BindingList<Machine>)Machines.DataSource;
+            var l = (SortableBindingList<Machine>)Machines.DataSource;
             l[i] = m;
             Machines.DataSource = l;
 
@@ -294,7 +294,7 @@ namespace FisherPlantHire
             //Hirers.RemoveCurrent();
 
             //// Save the change to file
-            //UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            //UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
         }
 
         private void DeletePlant_Click(object sender, EventArgs e)
@@ -304,7 +304,7 @@ namespace FisherPlantHire
             //Hirers.RemoveCurrent();
 
             //// Save the change to file
-            //UpdateCsvFile<Hirer>(((BindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            //UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
         }
 
         private void Print_Click(object sender, EventArgs e)
