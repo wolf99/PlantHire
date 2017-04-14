@@ -76,8 +76,13 @@
             this.DeletePlant = new System.Windows.Forms.Button();
             this.Clear = new System.Windows.Forms.Button();
             this.Print = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // HirerCode
@@ -95,11 +100,10 @@
             // 
             this.HirerDataGridView.AllowUserToAddRows = false;
             this.HirerDataGridView.AllowUserToDeleteRows = false;
-            this.HirerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.HirerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.HirerDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.HirerDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.HirerDataGridView.Location = new System.Drawing.Point(582, 9);
+            this.HirerDataGridView.Location = new System.Drawing.Point(0, 0);
             this.HirerDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.HirerDataGridView.Name = "HirerDataGridView";
             this.HirerDataGridView.ReadOnly = true;
@@ -107,7 +111,7 @@
             this.HirerDataGridView.RowTemplate.Height = 24;
             this.HirerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HirerDataGridView.ShowEditingIcon = false;
-            this.HirerDataGridView.Size = new System.Drawing.Size(522, 372);
+            this.HirerDataGridView.Size = new System.Drawing.Size(522, 363);
             this.HirerDataGridView.TabIndex = 18;
             this.HirerDataGridView.TabStop = false;
             this.HirerDataGridView.SelectionChanged += new System.EventHandler(this.HirerDataGridView_SelectionChanged);
@@ -495,18 +499,17 @@
             // 
             this.MachineDataGridView.AllowUserToAddRows = false;
             this.MachineDataGridView.AllowUserToDeleteRows = false;
-            this.MachineDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.MachineDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MachineDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MachineDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.MachineDataGridView.Location = new System.Drawing.Point(582, 388);
+            this.MachineDataGridView.Location = new System.Drawing.Point(0, 0);
             this.MachineDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.MachineDataGridView.Name = "MachineDataGridView";
             this.MachineDataGridView.ReadOnly = true;
             this.MachineDataGridView.RowHeadersVisible = false;
             this.MachineDataGridView.RowTemplate.Height = 24;
             this.MachineDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MachineDataGridView.Size = new System.Drawing.Size(522, 368);
+            this.MachineDataGridView.Size = new System.Drawing.Size(522, 371);
             this.MachineDataGridView.TabIndex = 42;
             this.MachineDataGridView.TabStop = false;
             this.MachineDataGridView.SelectionChanged += new System.EventHandler(this.MachineDataGridView_SelectionChanged);
@@ -607,11 +610,33 @@
             this.Print.UseVisualStyleBackColor = true;
             this.Print.Click += new System.EventHandler(this.Print_Click);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(581, 12);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.HirerDataGridView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.MachineDataGridView);
+            this.splitContainer1.Size = new System.Drawing.Size(522, 742);
+            this.splitContainer1.SplitterDistance = 363;
+            this.splitContainer1.SplitterWidth = 8;
+            this.splitContainer1.TabIndex = 48;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1115, 766);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.Print);
             this.Controls.Add(this.Clear);
             this.Controls.Add(this.DeletePlant);
@@ -620,7 +645,6 @@
             this.Controls.Add(this.DeleteHirer);
             this.Controls.Add(this.UpdateHirer);
             this.Controls.Add(this.AddHirer);
-            this.Controls.Add(this.MachineDataGridView);
             this.Controls.Add(this.CommencementDate);
             this.Controls.Add(this.OrderNumber);
             this.Controls.Add(this.CollectRate);
@@ -658,7 +682,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.HirerDataGridView);
             this.Controls.Add(this.HirerCode);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -666,6 +689,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,6 +748,7 @@
         private System.Windows.Forms.Button DeletePlant;
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Print;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
