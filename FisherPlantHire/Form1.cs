@@ -24,6 +24,9 @@ namespace FisherPlantHire
         private String PlantCsvPath;
         private string ContractTemplatePath;
 
+        // TODO: Make any text input all upper case
+        // TODO: Restrict Rate inputs to valid cash values
+
         public Form1()
         {
             InitializeComponent();
@@ -321,6 +324,39 @@ namespace FisherPlantHire
             }
         }
 
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            // Clear all the input controls
+            HirerCode.Text = "";
+            HirerName.Text = "";
+            HirerAddressLn1.Text = "";
+            HirerAddressLn2.Text = "";
+            HirerAddressLn3.Text = "";
+            HirerAddressLn4.Text = "";
+            HirerAddressLn5.Text = "";
+
+            SiteName.Text = "";
+            SiteAddressLn1.Text = "";
+            SiteAddressLn2.Text = "";
+            SiteAddressLn3.Text = "";
+            SiteAddressLn4.Text = "";
+            SiteAddressLn5.Text = "";
+
+            PlantCode.Text = "";
+            PlantDetailLn1.Text = "";
+            PlantDetailLn2.Text = "";
+            PlantDetailLn3.Text = "";
+            PlantDetailLn4.Text = "";
+            PlantDetailLn5.Text = "";
+
+            WeeklyRate.Text = "";
+            DailyRate.Text = "";
+            DeliveryRate.Text = "";
+            CollectRate.Text = "";
+            OrderNumber.Text = "";
+            CommencementDate.Value = DateTime.Now;
+        }
+
         private void Print_Click(object sender, EventArgs e)
         {
             // Open MS Word template ready for use
@@ -539,12 +575,12 @@ namespace FisherPlantHire
             if (records.Count == 0)
                 return;
 
-            // TODO: Handle the case where the file does not yet exist - we should create  new one.
-
             // Attempt to open the file as a stream and use that to instantiate 
             // a StreamWriter
             try
             {
+                // If a file already exists, open it and clear the contents,
+                // if it does not already exist, then create it.
                 fs = new FileStream(path, FileMode.Create, FileAccess.Write);
                 sw = new StreamWriter(fs);
             }

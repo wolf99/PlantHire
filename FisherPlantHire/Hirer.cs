@@ -22,6 +22,7 @@ namespace FisherPlantHire
             AddressLn5,
         }
 
+        // Strings implement IComparable, handy for sorting!
         public string Code { get; set; }
         public string Name { get; set; }
         public string AddressLn1 { get; set; }

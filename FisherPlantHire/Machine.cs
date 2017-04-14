@@ -25,6 +25,7 @@ namespace FisherPlantHire
             DailyRate,
         }
 
+        // Strings implement IComparable, handy for sorting!
         public string Code { get; set; }
         public string DetailLn1 { get; set; }
         public string DetailLn2 { get; set; }

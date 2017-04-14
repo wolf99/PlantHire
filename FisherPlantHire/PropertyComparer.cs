@@ -48,8 +48,6 @@ namespace FisherPlantHire
 
         private int CompareAscending(object xValue, object yValue)
         {
-            // TODO: Implement IComparer interfaces on Hirer and Machine?
-
             int Result;
 
             if (xValue == null && yValue != null) return -1;
@@ -67,7 +65,7 @@ namespace FisherPlantHire
                 Result = 0;
             }
             // Values don't implement IComparer and are not equivalent, so 
-            // compare as string valuse
+            // compare as string values
             else
             {
                 Result = xValue.ToString().CompareTo(yValue.ToString());
