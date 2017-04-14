@@ -93,7 +93,7 @@ namespace FisherPlantHire
             HirerDataGridView.Columns[5].FillWeight = 1;
             HirerDataGridView.Columns[6].FillWeight = 1;
 
-            // Code column should only be the minimu width.
+            // Code column should only be the minimum width.
             // First detail line column should have preference.
             // Subsequent detail lines have equal preference.
             // Rate columns should both only be as wide as they need to be
@@ -120,7 +120,6 @@ namespace FisherPlantHire
             // the "Add" button
             HirerDataGridView.RowsAdded += DataGridView_RowsAdded;
             MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
-
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

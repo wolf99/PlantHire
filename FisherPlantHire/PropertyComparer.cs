@@ -48,7 +48,7 @@ namespace FisherPlantHire
 
         private int CompareAscending(object xValue, object yValue)
         {
-            // TODO: Implement IComparer interfaces on Hirer and Machine
+            // TODO: Implement IComparer interfaces on Hirer and Machine?
 
             int Result;
 
