@@ -49,10 +49,6 @@ namespace FisherPlantHire
             else
                 Machines.DataSource = new SortableBindingList<Machine>();
 
-            // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
-            //Hirers.Sort = "Code ASC";
-            //Machines.Sort = "Code ASC";
-
             HirerDataGridView.DataSource = Hirers; // Bind form controls to BindingSources
             HirerCode.DataSource = Hirers;
             HirerCode.DisplayMember = "Code";
@@ -63,8 +59,9 @@ namespace FisherPlantHire
             PlantCode.DisplayMember = "Code";
             PlantCode.ValueMember = "Code";
 
-            // TODO: SORT DATA SOURCES BY CODE ALPHABETICALLY (OR MAYBE SORT THE ROWS?)
-            //HirerDataGridView.Sort(HirerDataGridView.Columns["Code"], ListSortDirection.Ascending);
+            // Start data sources alphabetically sorted by the Code column (i.e. A to Z)
+            HirerDataGridView.Sort(HirerDataGridView.Columns["Code"], ListSortDirection.Ascending);
+            MachineDataGridView.Sort(MachineDataGridView.Columns["Code"], ListSortDirection.Ascending);
 
             // Make the DataGridView column headings nicer
             HirerDataGridView.Columns[2].HeaderText = "Address 1";
