@@ -285,20 +285,40 @@ namespace FisherPlantHire
 
         private void DeleteHirer_Click(object sender, EventArgs e)
         {
-            // Remove the item from the binding source
-            Hirers.RemoveCurrent();
+            // Prompt the user if they're sure about deleting the record
+            var h = (Hirer)Hirers.Current;
+            var message = string.Format("Are you sure you want to delete the following record\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}\n{6}", 
+                h.Code, h.Name, h.AddressLn1, h.AddressLn2, h.AddressLn3, h.AddressLn4, h.AddressLn5);
+            var result = MessageBox.Show(message, "Delete record", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-            // Save the change to file
-            UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            // Check the user's response
+            if (result == DialogResult.Yes)
+            {
+                // Remove the item from the binding source
+                Hirers.Remove(h);
+
+                // Save the change to file
+                UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            }
         }
 
         private void DeletePlant_Click(object sender, EventArgs e)
         {
-            // Remove the item from the binding source
-            Machines.RemoveCurrent();
+            // Prompt the user if they're sure about deleting the record
+            var m = (Machine)Machines.Current;
+            var message = string.Format("Are you sure you want to delete the following record\n{0}\n{1}\n{2}\n{3}\n{4}\n{5}",
+                m.Code, m.DetailLn1, m.DetailLn2, m.DetailLn3, m.DetailLn4, m.DetailLn5);
+            var result = MessageBox.Show(message, "Delete record", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
-            // Save the change to file
-            UpdateCsvFile<Machine>(((SortableBindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
+            // Check the user's response
+            if (result == DialogResult.Yes)
+            {
+                // Remove the item from the binding source
+                Machines.Remove(m);
+
+                // Save the change to file
+                UpdateCsvFile<Machine>(((SortableBindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
+            }
         }
 
         private void Print_Click(object sender, EventArgs e)
@@ -395,7 +415,7 @@ namespace FisherPlantHire
             }
             catch (Exception error)
             {
-                MessageBox.Show("Could not open MS Word via Interop\n" + error.Message);
+                MessageBox.Show("Could not open MS Word via Interop\n" + error.Message, "Interop fault");
                 wordApp = null;
                 return;
             }
@@ -407,7 +427,7 @@ namespace FisherPlantHire
             }
             catch (Exception error)
             {
-                MessageBox.Show("Could not open MS Word template document\n" + error.Message);
+                MessageBox.Show("Could not open MS Word template document\n" + error.Message, "Word fault");
                 wordApp.Quit();
                 wordDoc = null;
                 wordApp = null;
@@ -430,7 +450,7 @@ namespace FisherPlantHire
                 }
                 catch (Exception error)
                 {
-                    MessageBox.Show(error.Message);
+                    MessageBox.Show(error.Message, "Close template fault");
                 }
             }
         }
@@ -534,7 +554,7 @@ namespace FisherPlantHire
                 // had a problem with it. Either way, from a user's perspective, 
                 // the file could not be opened
                 string message = string.Format("Could not open file for writing\n{0}\n{1}", path, e.Message);
-                MessageBox.Show("Cannot open file", message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(message, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
