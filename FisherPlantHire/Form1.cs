@@ -24,8 +24,8 @@ namespace FisherPlantHire
         private String PlantCsvPath;
         private string ContractTemplatePath;
 
-        // TODO: Make any text input all upper case
         // TODO: Restrict Rate inputs to valid cash values
+        // TODO: Make grids expand better with the window
 
         public Form1()
         {
@@ -123,6 +123,11 @@ namespace FisherPlantHire
             // the "Add" button
             HirerDataGridView.RowsAdded += DataGridView_RowsAdded;
             MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
+
+            // Add the handlers for ensuring any input in comboboxes is 
+            // converted to uppercase
+            HirerCode.KeyPress += ComboBox_KeyPress;
+            PlantCode.KeyPress += ComboBox_KeyPress;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -145,6 +150,19 @@ namespace FisherPlantHire
 
             // Handle the command key normally, using the overridden method
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // This event fires every time a key press is effected. This means 
+            // it fires multiple times if the user holds a key down
+
+            // Check the key being pressed is a letter
+            if (Char.IsLetter(e.KeyChar))
+            {
+                // Convert the key to uppercase and give it back
+                e.KeyChar = Char.ToUpper(e.KeyChar);
+            }
         }
 
         private void HirerDataGridView_SelectionChanged(object sender, EventArgs e)

@@ -147,6 +147,7 @@
             // 
             // HirerName
             // 
+            this.HirerName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerName.Location = new System.Drawing.Point(12, 108);
             this.HirerName.Margin = new System.Windows.Forms.Padding(2);
@@ -157,6 +158,7 @@
             // 
             // HirerAddressLn1
             // 
+            this.HirerAddressLn1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerAddressLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn1.Location = new System.Drawing.Point(12, 168);
             this.HirerAddressLn1.Margin = new System.Windows.Forms.Padding(2);
@@ -166,6 +168,7 @@
             // 
             // HirerAddressLn2
             // 
+            this.HirerAddressLn2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerAddressLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn2.Location = new System.Drawing.Point(12, 204);
             this.HirerAddressLn2.Margin = new System.Windows.Forms.Padding(2);
@@ -175,6 +178,7 @@
             // 
             // HirerAddressLn3
             // 
+            this.HirerAddressLn3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerAddressLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn3.Location = new System.Drawing.Point(12, 240);
             this.HirerAddressLn3.Margin = new System.Windows.Forms.Padding(2);
@@ -184,6 +188,7 @@
             // 
             // HirerAddressLn4
             // 
+            this.HirerAddressLn4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerAddressLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn4.Location = new System.Drawing.Point(12, 276);
             this.HirerAddressLn4.Margin = new System.Windows.Forms.Padding(2);
@@ -193,6 +198,7 @@
             // 
             // HirerAddressLn5
             // 
+            this.HirerAddressLn5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.HirerAddressLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HirerAddressLn5.Location = new System.Drawing.Point(12, 312);
             this.HirerAddressLn5.Margin = new System.Windows.Forms.Padding(2);
@@ -224,6 +230,7 @@
             // 
             // SiteName
             // 
+            this.SiteName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteName.Location = new System.Drawing.Point(361, 108);
             this.SiteName.Margin = new System.Windows.Forms.Padding(2);
@@ -233,6 +240,7 @@
             // 
             // SiteAddressLn1
             // 
+            this.SiteAddressLn1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteAddressLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn1.Location = new System.Drawing.Point(361, 168);
             this.SiteAddressLn1.Margin = new System.Windows.Forms.Padding(2);
@@ -242,6 +250,7 @@
             // 
             // SiteAddressLn2
             // 
+            this.SiteAddressLn2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteAddressLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn2.Location = new System.Drawing.Point(361, 204);
             this.SiteAddressLn2.Margin = new System.Windows.Forms.Padding(2);
@@ -251,6 +260,7 @@
             // 
             // SiteAddressLn3
             // 
+            this.SiteAddressLn3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteAddressLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn3.Location = new System.Drawing.Point(361, 240);
             this.SiteAddressLn3.Margin = new System.Windows.Forms.Padding(2);
@@ -260,6 +270,7 @@
             // 
             // SiteAddressLn4
             // 
+            this.SiteAddressLn4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteAddressLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn4.Location = new System.Drawing.Point(361, 276);
             this.SiteAddressLn4.Margin = new System.Windows.Forms.Padding(2);
@@ -269,6 +280,7 @@
             // 
             // SiteAddressLn5
             // 
+            this.SiteAddressLn5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.SiteAddressLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteAddressLn5.Location = new System.Drawing.Point(361, 312);
             this.SiteAddressLn5.Margin = new System.Windows.Forms.Padding(2);
@@ -288,6 +300,7 @@
             // 
             // PlantDetailLn1
             // 
+            this.PlantDetailLn1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PlantDetailLn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn1.Location = new System.Drawing.Point(12, 502);
             this.PlantDetailLn1.Margin = new System.Windows.Forms.Padding(2);
@@ -297,6 +310,7 @@
             // 
             // PlantDetailLn2
             // 
+            this.PlantDetailLn2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PlantDetailLn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn2.Location = new System.Drawing.Point(12, 539);
             this.PlantDetailLn2.Margin = new System.Windows.Forms.Padding(2);
@@ -306,6 +320,7 @@
             // 
             // PlantDetailLn3
             // 
+            this.PlantDetailLn3.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PlantDetailLn3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn3.Location = new System.Drawing.Point(12, 575);
             this.PlantDetailLn3.Margin = new System.Windows.Forms.Padding(2);
@@ -315,6 +330,7 @@
             // 
             // PlantDetailLn4
             // 
+            this.PlantDetailLn4.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PlantDetailLn4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn4.Location = new System.Drawing.Point(12, 611);
             this.PlantDetailLn4.Margin = new System.Windows.Forms.Padding(2);
@@ -324,6 +340,7 @@
             // 
             // PlantDetailLn5
             // 
+            this.PlantDetailLn5.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PlantDetailLn5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PlantDetailLn5.Location = new System.Drawing.Point(12, 648);
             this.PlantDetailLn5.Margin = new System.Windows.Forms.Padding(2);
