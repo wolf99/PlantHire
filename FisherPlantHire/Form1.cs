@@ -285,22 +285,20 @@ namespace FisherPlantHire
 
         private void DeleteHirer_Click(object sender, EventArgs e)
         {
-            // TODO: Implement hirer delete
-            //// Remove the item from the binding source
-            //Hirers.RemoveCurrent();
+            // Remove the item from the binding source
+            Hirers.RemoveCurrent();
 
-            //// Save the change to file
-            //UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            // Save the change to file
+            UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
         }
 
         private void DeletePlant_Click(object sender, EventArgs e)
         {
-            // TODO: Implement plant delete
-            //// Remove the item from the binding source
-            //Hirers.RemoveCurrent();
+            // Remove the item from the binding source
+            Machines.RemoveCurrent();
 
-            //// Save the change to file
-            //UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+            // Save the change to file
+            UpdateCsvFile<Machine>(((SortableBindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
         }
 
         private void Print_Click(object sender, EventArgs e)
