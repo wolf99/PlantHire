@@ -79,6 +79,16 @@ namespace FisherPlantHire.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Kingfisher {
+            get {
+                object obj = ResourceManager.GetObject("Kingfisher", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\Plant.csv.
         /// </summary>
         internal static string PlantCsvPath {

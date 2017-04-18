@@ -34,6 +34,7 @@ namespace FisherPlantHire
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Icon = Properties.Resources.Kingfisher;
             HirerFactory hf = new HirerFactory(); // Create record factories
             MachineFactory mf = new MachineFactory();
 
