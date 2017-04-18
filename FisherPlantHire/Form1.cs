@@ -25,7 +25,6 @@ namespace FisherPlantHire
         private string ContractTemplatePath;
 
         // TODO: Restrict Rate inputs to valid cash values
-        // TODO: Add App icon for form title and desktop exe icon
 
         public Form1()
         {
