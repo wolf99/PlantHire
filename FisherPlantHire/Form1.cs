@@ -24,7 +24,6 @@ namespace FisherPlantHire
         private String PlantCsvPath;
         private string ContractTemplatePath;
 
-        // TODO: Restrict Rate inputs to valid cash values
         // TODO: Fix error on second print - cannot reproduce
 
         public Form1()
@@ -143,6 +142,17 @@ namespace FisherPlantHire
             PlantDetailLn4.KeyPress += TextBox_KeyPress;
             PlantDetailLn5.KeyPress += TextBox_KeyPress;
             OrderNumber.KeyPress += TextBox_KeyPress;
+
+            // Add the handlers for ensuring the correct format in rate textboxes
+            WeeklyRate.KeyPress += CurrencyTextBox_KeyPress;
+            DailyRate.KeyPress += CurrencyTextBox_KeyPress;
+            DeliveryRate.KeyPress += CurrencyTextBox_KeyPress;
+            CollectRate.KeyPress += CurrencyTextBox_KeyPress;
+
+            WeeklyRate.Validating += CurrencyTextBox_Validating;
+            DailyRate.Validating += CurrencyTextBox_Validating;
+            DeliveryRate.Validating += CurrencyTextBox_Validating;
+            CollectRate.Validating += CurrencyTextBox_Validating;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -196,6 +206,58 @@ namespace FisherPlantHire
             {
                 // Mark the event as handled so that nothing further happens
                 e.Handled = true;
+            }
+        }
+
+        private void CurrencyTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // This event fires every time a key press is effected. This means 
+            // it fires multiple times if the user holds a key down
+
+            // Check if the key being pressed is a comma
+            if (e.KeyChar == ',')
+            {
+                // Mark the event as handled so that nothing further happens
+                e.Handled = true;
+            }
+            // Prevent non digit characters but allow decimal points and 
+            // control keys (e.g. backspace, Ctrl+V, etc)
+            else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.') 
+                && (!Char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+            // Prevent more than one decimal point
+            else if ((e.KeyChar == '.') && ( ((TextBox)sender).Text.Contains(".")))
+            {
+                e.Handled = true;
+                return;
+            }
+            // Prevent more than two decimal places
+            else if (Char.IsDigit(e.KeyChar))
+            {
+                string Text = ((TextBox)sender).Text;
+                int DecimalPlaces = Text.Split('.').Count() > 1 
+                    ? Text.Split('.').ToList().ElementAt(1).Length : 0;
+
+                if (DecimalPlaces == 2)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void CurrencyTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            // Check if the entered text can be correctly parsed as a decimal 
+            // in the style of currency
+            Decimal Value = 0;
+            String Text = ((TextBox)sender).Text;
+            if (!string.IsNullOrEmpty(Text) && !decimal.TryParse(Text, 
+                System.Globalization.NumberStyles.Currency, null, out Value))
+            {
+                // Cancel the validation
+                e.Cancel = true;
             }
         }
 

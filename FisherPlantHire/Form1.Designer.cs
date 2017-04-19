@@ -61,11 +61,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.WeeklyRate = new System.Windows.Forms.MaskedTextBox();
-            this.DailyRate = new System.Windows.Forms.MaskedTextBox();
-            this.DeliveryRate = new System.Windows.Forms.MaskedTextBox();
-            this.CollectRate = new System.Windows.Forms.MaskedTextBox();
-            this.OrderNumber = new System.Windows.Forms.MaskedTextBox();
             this.CommencementDate = new System.Windows.Forms.DateTimePicker();
             this.MachineDataGridView = new System.Windows.Forms.DataGridView();
             this.AddHirer = new System.Windows.Forms.Button();
@@ -77,6 +72,11 @@
             this.Clear = new System.Windows.Forms.Button();
             this.Print = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.WeeklyRate = new System.Windows.Forms.TextBox();
+            this.DailyRate = new System.Windows.Forms.TextBox();
+            this.DeliveryRate = new System.Windows.Forms.TextBox();
+            this.CollectRate = new System.Windows.Forms.TextBox();
+            this.OrderNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -440,56 +440,11 @@
             this.label13.TabIndex = 40;
             this.label13.Text = "Commencement Date";
             // 
-            // WeeklyRate
-            // 
-            this.WeeklyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WeeklyRate.Location = new System.Drawing.Point(442, 468);
-            this.WeeklyRate.Margin = new System.Windows.Forms.Padding(2);
-            this.WeeklyRate.Name = "WeeklyRate";
-            this.WeeklyRate.Size = new System.Drawing.Size(133, 30);
-            this.WeeklyRate.TabIndex = 31;
-            // 
-            // DailyRate
-            // 
-            this.DailyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DailyRate.Location = new System.Drawing.Point(442, 502);
-            this.DailyRate.Margin = new System.Windows.Forms.Padding(2);
-            this.DailyRate.Name = "DailyRate";
-            this.DailyRate.Size = new System.Drawing.Size(133, 30);
-            this.DailyRate.TabIndex = 33;
-            // 
-            // DeliveryRate
-            // 
-            this.DeliveryRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeliveryRate.Location = new System.Drawing.Point(442, 539);
-            this.DeliveryRate.Margin = new System.Windows.Forms.Padding(2);
-            this.DeliveryRate.Name = "DeliveryRate";
-            this.DeliveryRate.Size = new System.Drawing.Size(133, 30);
-            this.DeliveryRate.TabIndex = 35;
-            // 
-            // CollectRate
-            // 
-            this.CollectRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CollectRate.Location = new System.Drawing.Point(442, 575);
-            this.CollectRate.Margin = new System.Windows.Forms.Padding(2);
-            this.CollectRate.Name = "CollectRate";
-            this.CollectRate.Size = new System.Drawing.Size(133, 30);
-            this.CollectRate.TabIndex = 37;
-            // 
-            // OrderNumber
-            // 
-            this.OrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrderNumber.Location = new System.Drawing.Point(442, 611);
-            this.OrderNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.OrderNumber.Name = "OrderNumber";
-            this.OrderNumber.Size = new System.Drawing.Size(133, 30);
-            this.OrderNumber.TabIndex = 39;
-            // 
             // CommencementDate
             // 
             this.CommencementDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CommencementDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.CommencementDate.Location = new System.Drawing.Point(442, 648);
+            this.CommencementDate.Location = new System.Drawing.Point(442, 646);
             this.CommencementDate.Margin = new System.Windows.Forms.Padding(2);
             this.CommencementDate.Name = "CommencementDate";
             this.CommencementDate.Size = new System.Drawing.Size(133, 30);
@@ -631,11 +586,56 @@
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 48;
             // 
+            // WeeklyRate
+            // 
+            this.WeeklyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WeeklyRate.Location = new System.Drawing.Point(442, 467);
+            this.WeeklyRate.Name = "WeeklyRate";
+            this.WeeklyRate.Size = new System.Drawing.Size(133, 30);
+            this.WeeklyRate.TabIndex = 31;
+            // 
+            // DailyRate
+            // 
+            this.DailyRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DailyRate.Location = new System.Drawing.Point(442, 503);
+            this.DailyRate.Name = "DailyRate";
+            this.DailyRate.Size = new System.Drawing.Size(133, 30);
+            this.DailyRate.TabIndex = 33;
+            // 
+            // DeliveryRate
+            // 
+            this.DeliveryRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeliveryRate.Location = new System.Drawing.Point(443, 539);
+            this.DeliveryRate.Name = "DeliveryRate";
+            this.DeliveryRate.Size = new System.Drawing.Size(133, 30);
+            this.DeliveryRate.TabIndex = 35;
+            // 
+            // CollectRate
+            // 
+            this.CollectRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CollectRate.Location = new System.Drawing.Point(443, 575);
+            this.CollectRate.Name = "CollectRate";
+            this.CollectRate.Size = new System.Drawing.Size(133, 30);
+            this.CollectRate.TabIndex = 37;
+            // 
+            // OrderNumber
+            // 
+            this.OrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OrderNumber.Location = new System.Drawing.Point(442, 611);
+            this.OrderNumber.Name = "OrderNumber";
+            this.OrderNumber.Size = new System.Drawing.Size(133, 30);
+            this.OrderNumber.TabIndex = 39;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1115, 766);
+            this.Controls.Add(this.OrderNumber);
+            this.Controls.Add(this.CollectRate);
+            this.Controls.Add(this.DeliveryRate);
+            this.Controls.Add(this.DailyRate);
+            this.Controls.Add(this.WeeklyRate);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.Print);
             this.Controls.Add(this.Clear);
@@ -646,11 +646,6 @@
             this.Controls.Add(this.UpdateHirer);
             this.Controls.Add(this.AddHirer);
             this.Controls.Add(this.CommencementDate);
-            this.Controls.Add(this.OrderNumber);
-            this.Controls.Add(this.CollectRate);
-            this.Controls.Add(this.DeliveryRate);
-            this.Controls.Add(this.DailyRate);
-            this.Controls.Add(this.WeeklyRate);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
@@ -733,11 +728,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MaskedTextBox WeeklyRate;
-        private System.Windows.Forms.MaskedTextBox DailyRate;
-        private System.Windows.Forms.MaskedTextBox DeliveryRate;
-        private System.Windows.Forms.MaskedTextBox CollectRate;
-        private System.Windows.Forms.MaskedTextBox OrderNumber;
         private System.Windows.Forms.DateTimePicker CommencementDate;
         private System.Windows.Forms.DataGridView MachineDataGridView;
         private System.Windows.Forms.Button AddHirer;
@@ -749,6 +739,11 @@
         private System.Windows.Forms.Button Clear;
         private System.Windows.Forms.Button Print;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox WeeklyRate;
+        private System.Windows.Forms.TextBox DailyRate;
+        private System.Windows.Forms.TextBox DeliveryRate;
+        private System.Windows.Forms.TextBox CollectRate;
+        private System.Windows.Forms.TextBox OrderNumber;
     }
 }
 
