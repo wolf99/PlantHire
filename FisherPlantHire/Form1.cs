@@ -25,8 +25,7 @@ namespace FisherPlantHire
         private string ContractTemplatePath;
 
         // TODO: Restrict Rate inputs to valid cash values
-        // TODO: Prevent comma input in all user input controls (TextBoxes, ComboBoxes, MaskedTextBoxes, etc)
-        // TODO: Fix error on second print
+        // TODO: Fix error on second print - cannot reproduce
 
         public Form1()
         {
@@ -127,9 +126,23 @@ namespace FisherPlantHire
             MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
 
             // Add the handlers for ensuring any input in comboboxes is 
-            // converted to uppercase
+            // converted to uppercase and preventing commas being entered
             HirerCode.KeyPress += ComboBox_KeyPress;
             PlantCode.KeyPress += ComboBox_KeyPress;
+
+            // Add the handlers for preventing commas being entered in textboxes
+            HirerName.KeyPress += TextBox_KeyPress;
+            HirerAddressLn1.KeyPress += TextBox_KeyPress;
+            HirerAddressLn2.KeyPress += TextBox_KeyPress;
+            HirerAddressLn3.KeyPress += TextBox_KeyPress;
+            HirerAddressLn4.KeyPress += TextBox_KeyPress;
+            HirerAddressLn5.KeyPress += TextBox_KeyPress;
+            PlantDetailLn1.KeyPress += TextBox_KeyPress;
+            PlantDetailLn2.KeyPress += TextBox_KeyPress;
+            PlantDetailLn3.KeyPress += TextBox_KeyPress;
+            PlantDetailLn4.KeyPress += TextBox_KeyPress;
+            PlantDetailLn5.KeyPress += TextBox_KeyPress;
+            OrderNumber.KeyPress += TextBox_KeyPress;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -164,6 +177,25 @@ namespace FisherPlantHire
             {
                 // Convert the key to uppercase and give it back
                 e.KeyChar = Char.ToUpper(e.KeyChar);
+            }
+            // Check if the key being pressed is a comma
+            else if (e.KeyChar == ',')
+            {
+                // Mark the event as handled so that nothing further happens
+                e.Handled = true;
+            }
+        }
+
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // This event fires every time a key press is effected. This means 
+            // it fires multiple times if the user holds a key down
+
+            // Check if the key being pressed is a comma
+            if (e.KeyChar == ',')
+            {
+                // Mark the event as handled so that nothing further happens
+                e.Handled = true;
             }
         }
 
@@ -329,7 +361,7 @@ namespace FisherPlantHire
                 HirerCode.Select();
             }
         }
-
+        
         private void DeletePlant_Click(object sender, EventArgs e)
         {
             // Prompt the user if they're sure about deleting the record
