@@ -25,6 +25,8 @@ namespace FisherPlantHire
         private string ContractTemplatePath;
 
         // TODO: Restrict Rate inputs to valid cash values
+        // TODO: Prevent comma input in all user input controls (TextBoxes, ComboBoxes, MaskedTextBoxes, etc)
+        // TODO: Fix error on second print
 
         public Form1()
         {
@@ -315,11 +317,16 @@ namespace FisherPlantHire
             // Check the user's response
             if (result == DialogResult.Yes)
             {
+                // Temporarily unbind BindingSource from DataGridView DataSource
+                HirerDataGridView.DataSource = null;
                 // Remove the item from the binding source
                 Hirers.Remove(h);
-
+                // Rebind BindingSource to DataGridView DataSource
+                HirerDataGridView.DataSource = Hirers;
                 // Save the change to file
                 UpdateCsvFile<Hirer>(((SortableBindingList<Hirer>)Hirers.DataSource).ToList(), HirerCsvPath);
+                // Refocus on the Code ComboBox
+                HirerCode.Select();
             }
         }
 
@@ -334,11 +341,16 @@ namespace FisherPlantHire
             // Check the user's response
             if (result == DialogResult.Yes)
             {
+                // Temporarily unbind BindingSource from DataGridView DataSource
+                MachineDataGridView.DataSource = null;
                 // Remove the item from the binding source
                 Machines.Remove(m);
-
+                // Rebind BindinSgource to DataGridView DataSource
+                MachineDataGridView.DataSource = Machines;
                 // Save the change to file
                 UpdateCsvFile<Machine>(((SortableBindingList<Machine>)Machines.DataSource).ToList(), PlantCsvPath);
+                // Refocus on the Code ComboBox
+                PlantCode.Select();
             }
         }
 
