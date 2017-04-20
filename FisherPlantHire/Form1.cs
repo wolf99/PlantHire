@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.VisualBasic.FileIO;
@@ -153,6 +149,9 @@ namespace FisherPlantHire
             DailyRate.Validating += CurrencyTextBox_Validating;
             DeliveryRate.Validating += CurrencyTextBox_Validating;
             CollectRate.Validating += CurrencyTextBox_Validating;
+
+            // Ensure all controls are clear when starting
+            ClearAllControls();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -450,7 +449,12 @@ namespace FisherPlantHire
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            // Clear all the input controls
+            ClearAllControls();
+        }
+
+        private void ClearAllControls()
+        {
+            // Clear all TextBox and ComboBox controls
             HirerCode.Text = "";
             HirerName.Text = "";
             HirerAddressLn1.Text = "";
@@ -478,7 +482,20 @@ namespace FisherPlantHire
             DeliveryRate.Text = "";
             CollectRate.Text = "";
             OrderNumber.Text = "";
+
+            // Set datetime inputs to current date
             CommencementDate.Value = DateTime.Now;
+
+            // Ensure no row is selected in the DataGridView controls
+            foreach (DataGridViewRow row in HirerDataGridView.SelectedRows)
+            {
+                row.Selected = false;
+            }
+
+            foreach (DataGridViewRow row in MachineDataGridView.SelectedRows)
+            {
+                row.Selected = false;
+            }
         }
 
         private void Print_Click(object sender, EventArgs e)
