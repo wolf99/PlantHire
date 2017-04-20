@@ -680,7 +680,7 @@
             this.Controls.Add(this.HirerCode);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Fisher Plant HIre";
+            this.Text = "Fisher Plant Hire Invoice Generation";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).EndInit();

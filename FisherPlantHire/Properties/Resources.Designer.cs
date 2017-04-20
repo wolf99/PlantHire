@@ -61,7 +61,7 @@ namespace FisherPlantHire.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\ContractTemplate.dotx.
+        ///   Looks up a localized string similar to .\\resources\\ContractTemplate.dotx.
         /// </summary>
         internal static string ContractTemplatePath {
             get {
@@ -70,7 +70,7 @@ namespace FisherPlantHire.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\Hirers.csv.
+        ///   Looks up a localized string similar to .\\resources\\Hirers.csv.
         /// </summary>
         internal static string HirerCsvPath {
             get {
@@ -89,7 +89,7 @@ namespace FisherPlantHire.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .\\..\\..\\..\\resources\\Plant.csv.
+        ///   Looks up a localized string similar to .\\resources\\Plant.csv.
         /// </summary>
         internal static string PlantCsvPath {
             get {
