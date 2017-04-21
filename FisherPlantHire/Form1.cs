@@ -507,12 +507,14 @@ namespace FisherPlantHire
             wordDoc.Activate();
 
             // Set the text for each bookmark from the corresponding data in the GUI
-            SetBookmarkText(wordDoc, "Hirer", HirerName.Text);
+            SetBookmarkText(wordDoc, "Hirer", HirerCode.Text);
+            SetBookmarkText(wordDoc, "HirerName", HirerName.Text);
             SetBookmarkText(wordDoc, "HirerAddress1", HirerAddressLn1.Text);
             SetBookmarkText(wordDoc, "HirerAddress2", HirerAddressLn2.Text);
             SetBookmarkText(wordDoc, "HirerAddress3", HirerAddressLn3.Text);
             SetBookmarkText(wordDoc, "HirerAddress4", HirerAddressLn4.Text);
             SetBookmarkText(wordDoc, "HirerAddress5", HirerAddressLn5.Text);
+            //SetBookmarkText(wordDoc, "SiteName", SiteName.Text); // Bookmark does not exist? Checking required behaviour with client
             SetBookmarkText(wordDoc, "SiteAddress1", SiteAddressLn1.Text);
             SetBookmarkText(wordDoc, "SiteAddress2", SiteAddressLn2.Text);
             SetBookmarkText(wordDoc, "SiteAddress3", SiteAddressLn3.Text);
@@ -577,12 +579,9 @@ namespace FisherPlantHire
             // Check MS Word dotx template exists
             if (!File.Exists(path))
             {
-                string message = string.Format("Cant find: {0}\nWill not be able to print or save contract", path);
-                var response = MessageBox.Show(message, "Cannot find contract template", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-                if (response == DialogResult.Cancel)
-                {
-                    Environment.Exit(0);
-                }
+                string message = string.Format("Cant find: {0}\nWill not be able to print contract", path);
+                var response = MessageBox.Show(message, "Cannot find contract template", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             try

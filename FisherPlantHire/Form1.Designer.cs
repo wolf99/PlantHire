@@ -235,6 +235,7 @@
             // SiteName
             // 
             this.SiteName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.SiteName.Enabled = false;
             this.SiteName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SiteName.Location = new System.Drawing.Point(361, 108);
             this.SiteName.Margin = new System.Windows.Forms.Padding(2);
