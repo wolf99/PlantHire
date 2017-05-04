@@ -1,4 +1,7 @@
-﻿using System;
+﻿
+#define  ALLOW_TEXT_IN_CURRENCY_INPUT
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,8 +14,9 @@ namespace FisherPlantHire
 {
     public partial class Form1 : Form
     {
+#if ALLOW_TEXT_IN_CURRENCY_INPUT
         private const byte RateTextLengthLimit = 8;
-
+#endif
         private Word.Application wordApp = null;
         private Word.Document wordDoc = null;
 
@@ -219,19 +223,22 @@ namespace FisherPlantHire
                 // Mark the event as handled so that nothing further happens
                 e.Handled = true;
             }
+#if !ALLOW_TEXT_IN_CURRENCY_INPUT
             // Prevent non digit characters but allow decimal points and 
             // control keys (e.g. backspace, Ctrl+V, etc)
-            //else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.') 
-            //    && (!Char.IsControl(e.KeyChar)))
-            //{
-            //    e.Handled = true;
-            //}
-            // Prevent more than n characters
+            else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.')
+                && (!Char.IsControl(e.KeyChar)))
+            {
+                e.Handled = true;
+            }
+#else
+            //Prevent more than n characters
             else if ((((TextBox)sender).Text.Length >= RateTextLengthLimit) 
                 && (!Char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;
             }
+#endif
             // Prevent more than one decimal point
             else if ((e.KeyChar == '.') && ( ((TextBox)sender).Text.Contains(".")))
             {
