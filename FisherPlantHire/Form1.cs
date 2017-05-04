@@ -11,6 +11,8 @@ namespace FisherPlantHire
 {
     public partial class Form1 : Form
     {
+        private const byte RateTextLengthLimit = 8;
+
         private Word.Application wordApp = null;
         private Word.Document wordDoc = null;
 
@@ -19,8 +21,6 @@ namespace FisherPlantHire
         private String HirerCsvPath;
         private String PlantCsvPath;
         private string ContractTemplatePath;
-
-        // TODO: Fix error on second print - cannot reproduce
 
         public Form1()
         {
@@ -221,7 +221,13 @@ namespace FisherPlantHire
             }
             // Prevent non digit characters but allow decimal points and 
             // control keys (e.g. backspace, Ctrl+V, etc)
-            else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.') 
+            //else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.') 
+            //    && (!Char.IsControl(e.KeyChar)))
+            //{
+            //    e.Handled = true;
+            //}
+            // Prevent more than n characters
+            else if ((((TextBox)sender).Text.Length >= RateTextLengthLimit) 
                 && (!Char.IsControl(e.KeyChar)))
             {
                 e.Handled = true;

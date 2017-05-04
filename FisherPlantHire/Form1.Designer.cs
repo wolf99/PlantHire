@@ -111,7 +111,7 @@
             this.HirerDataGridView.RowTemplate.Height = 24;
             this.HirerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HirerDataGridView.ShowEditingIcon = false;
-            this.HirerDataGridView.Size = new System.Drawing.Size(522, 363);
+            this.HirerDataGridView.Size = new System.Drawing.Size(522, 344);
             this.HirerDataGridView.TabIndex = 18;
             this.HirerDataGridView.TabStop = false;
             this.HirerDataGridView.SelectionChanged += new System.EventHandler(this.HirerDataGridView_SelectionChanged);
@@ -465,7 +465,7 @@
             this.MachineDataGridView.RowHeadersVisible = false;
             this.MachineDataGridView.RowTemplate.Height = 24;
             this.MachineDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MachineDataGridView.Size = new System.Drawing.Size(522, 371);
+            this.MachineDataGridView.Size = new System.Drawing.Size(522, 390);
             this.MachineDataGridView.TabIndex = 42;
             this.MachineDataGridView.TabStop = false;
             this.MachineDataGridView.SelectionChanged += new System.EventHandler(this.MachineDataGridView_SelectionChanged);
@@ -583,7 +583,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.MachineDataGridView);
             this.splitContainer1.Size = new System.Drawing.Size(522, 742);
-            this.splitContainer1.SplitterDistance = 363;
+            this.splitContainer1.SplitterDistance = 344;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 48;
             // 
