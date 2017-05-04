@@ -77,6 +77,8 @@
             this.DeliveryRate = new System.Windows.Forms.TextBox();
             this.CollectRate = new System.Windows.Forms.TextBox();
             this.OrderNumber = new System.Windows.Forms.TextBox();
+            this.Note = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HirerDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MachineDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -111,7 +113,7 @@
             this.HirerDataGridView.RowTemplate.Height = 24;
             this.HirerDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.HirerDataGridView.ShowEditingIcon = false;
-            this.HirerDataGridView.Size = new System.Drawing.Size(522, 344);
+            this.HirerDataGridView.Size = new System.Drawing.Size(522, 392);
             this.HirerDataGridView.TabIndex = 18;
             this.HirerDataGridView.TabStop = false;
             this.HirerDataGridView.SelectionChanged += new System.EventHandler(this.HirerDataGridView_SelectionChanged);
@@ -465,7 +467,7 @@
             this.MachineDataGridView.RowHeadersVisible = false;
             this.MachineDataGridView.RowTemplate.Height = 24;
             this.MachineDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MachineDataGridView.Size = new System.Drawing.Size(522, 390);
+            this.MachineDataGridView.Size = new System.Drawing.Size(522, 444);
             this.MachineDataGridView.TabIndex = 42;
             this.MachineDataGridView.TabStop = false;
             this.MachineDataGridView.SelectionChanged += new System.EventHandler(this.MachineDataGridView_SelectionChanged);
@@ -473,7 +475,7 @@
             // AddHirer
             // 
             this.AddHirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddHirer.Location = new System.Drawing.Point(254, 348);
+            this.AddHirer.Location = new System.Drawing.Point(256, 348);
             this.AddHirer.Margin = new System.Windows.Forms.Padding(2);
             this.AddHirer.Name = "AddHirer";
             this.AddHirer.Size = new System.Drawing.Size(114, 32);
@@ -497,7 +499,7 @@
             // DeleteHirer
             // 
             this.DeleteHirer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteHirer.Location = new System.Drawing.Point(478, 348);
+            this.DeleteHirer.Location = new System.Drawing.Point(476, 348);
             this.DeleteHirer.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteHirer.Name = "DeleteHirer";
             this.DeleteHirer.Size = new System.Drawing.Size(98, 32);
@@ -509,7 +511,7 @@
             // AddPlant
             // 
             this.AddPlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddPlant.Location = new System.Drawing.Point(252, 682);
+            this.AddPlant.Location = new System.Drawing.Point(256, 785);
             this.AddPlant.Margin = new System.Windows.Forms.Padding(2);
             this.AddPlant.Name = "AddPlant";
             this.AddPlant.Size = new System.Drawing.Size(114, 32);
@@ -521,7 +523,7 @@
             // UpdatePlant
             // 
             this.UpdatePlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdatePlant.Location = new System.Drawing.Point(372, 682);
+            this.UpdatePlant.Location = new System.Drawing.Point(374, 785);
             this.UpdatePlant.Margin = new System.Windows.Forms.Padding(2);
             this.UpdatePlant.Name = "UpdatePlant";
             this.UpdatePlant.Size = new System.Drawing.Size(98, 32);
@@ -533,7 +535,7 @@
             // DeletePlant
             // 
             this.DeletePlant.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeletePlant.Location = new System.Drawing.Point(478, 682);
+            this.DeletePlant.Location = new System.Drawing.Point(476, 785);
             this.DeletePlant.Margin = new System.Windows.Forms.Padding(2);
             this.DeletePlant.Name = "DeletePlant";
             this.DeletePlant.Size = new System.Drawing.Size(98, 32);
@@ -545,7 +547,7 @@
             // Clear
             // 
             this.Clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Clear.Location = new System.Drawing.Point(12, 722);
+            this.Clear.Location = new System.Drawing.Point(12, 825);
             this.Clear.Margin = new System.Windows.Forms.Padding(2);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(75, 32);
@@ -557,7 +559,7 @@
             // Print
             // 
             this.Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Print.Location = new System.Drawing.Point(92, 722);
+            this.Print.Location = new System.Drawing.Point(92, 825);
             this.Print.Margin = new System.Windows.Forms.Padding(2);
             this.Print.Name = "Print";
             this.Print.Size = new System.Drawing.Size(75, 32);
@@ -582,8 +584,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.MachineDataGridView);
-            this.splitContainer1.Size = new System.Drawing.Size(522, 742);
-            this.splitContainer1.SplitterDistance = 344;
+            this.splitContainer1.Size = new System.Drawing.Size(522, 844);
+            this.splitContainer1.SplitterDistance = 392;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 48;
             // 
@@ -627,11 +629,35 @@
             this.OrderNumber.Size = new System.Drawing.Size(133, 30);
             this.OrderNumber.TabIndex = 39;
             // 
+            // Note
+            // 
+            this.Note.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.Note.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Note.Location = new System.Drawing.Point(11, 714);
+            this.Note.Margin = new System.Windows.Forms.Padding(2);
+            this.Note.Multiline = true;
+            this.Note.Name = "Note";
+            this.Note.Size = new System.Drawing.Size(564, 65);
+            this.Note.TabIndex = 49;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(12, 687);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 25);
+            this.label14.TabIndex = 50;
+            this.label14.Text = "Note";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1115, 766);
+            this.ClientSize = new System.Drawing.Size(1115, 868);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.Note);
             this.Controls.Add(this.OrderNumber);
             this.Controls.Add(this.CollectRate);
             this.Controls.Add(this.DeliveryRate);
@@ -745,6 +771,8 @@
         private System.Windows.Forms.TextBox DeliveryRate;
         private System.Windows.Forms.TextBox CollectRate;
         private System.Windows.Forms.TextBox OrderNumber;
+        private System.Windows.Forms.TextBox Note;
+        private System.Windows.Forms.Label label14;
     }
 }
 
