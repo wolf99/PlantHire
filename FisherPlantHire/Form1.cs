@@ -130,18 +130,18 @@ namespace FisherPlantHire
             PlantCode.KeyPress += ComboBox_KeyPress;
 
             // Add the handlers for preventing commas being entered in textboxes
-            HirerName.KeyPress += TextBox_KeyPress;
-            HirerAddressLn1.KeyPress += TextBox_KeyPress;
-            HirerAddressLn2.KeyPress += TextBox_KeyPress;
-            HirerAddressLn3.KeyPress += TextBox_KeyPress;
-            HirerAddressLn4.KeyPress += TextBox_KeyPress;
-            HirerAddressLn5.KeyPress += TextBox_KeyPress;
-            PlantDetailLn1.KeyPress += TextBox_KeyPress;
-            PlantDetailLn2.KeyPress += TextBox_KeyPress;
-            PlantDetailLn3.KeyPress += TextBox_KeyPress;
-            PlantDetailLn4.KeyPress += TextBox_KeyPress;
-            PlantDetailLn5.KeyPress += TextBox_KeyPress;
-            OrderNumber.KeyPress += TextBox_KeyPress;
+            HirerName.KeyPress += CsvTextBox_KeyPress;
+            HirerAddressLn1.KeyPress += CsvTextBox_KeyPress;
+            HirerAddressLn2.KeyPress += CsvTextBox_KeyPress;
+            HirerAddressLn3.KeyPress += CsvTextBox_KeyPress;
+            HirerAddressLn4.KeyPress += CsvTextBox_KeyPress;
+            HirerAddressLn5.KeyPress += CsvTextBox_KeyPress;
+            PlantDetailLn1.KeyPress += CsvTextBox_KeyPress;
+            PlantDetailLn2.KeyPress += CsvTextBox_KeyPress;
+            PlantDetailLn3.KeyPress += CsvTextBox_KeyPress;
+            PlantDetailLn4.KeyPress += CsvTextBox_KeyPress;
+            PlantDetailLn5.KeyPress += CsvTextBox_KeyPress;
+            OrderNumber.KeyPress += CsvTextBox_KeyPress;
 
             // Add the handlers for ensuring the correct format in rate textboxes
             WeeklyRate.KeyPress += CurrencyTextBox_KeyPress;
@@ -199,7 +199,7 @@ namespace FisherPlantHire
             }
         }
 
-        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void CsvTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             // This event fires every time a key press is effected. This means 
             // it fires multiple times if the user holds a key down
@@ -496,6 +496,8 @@ namespace FisherPlantHire
             CollectRate.Text = "";
             OrderNumber.Text = "";
 
+            Note.Text = "";
+
             // Set datetime inputs to current date
             CommencementDate.Value = DateTime.Now;
 
@@ -527,7 +529,7 @@ namespace FisherPlantHire
             SetBookmarkText(wordDoc, "HirerAddress3", HirerAddressLn3.Text);
             SetBookmarkText(wordDoc, "HirerAddress4", HirerAddressLn4.Text);
             SetBookmarkText(wordDoc, "HirerAddress5", HirerAddressLn5.Text);
-            //SetBookmarkText(wordDoc, "SiteName", SiteName.Text); // Bookmark does not exist? Checking required behaviour with client
+            //SetBookmarkText(wordDoc, "SiteName", SiteName.Text); // Bookmark does not exist
             SetBookmarkText(wordDoc, "SiteAddress1", SiteAddressLn1.Text);
             SetBookmarkText(wordDoc, "SiteAddress2", SiteAddressLn2.Text);
             SetBookmarkText(wordDoc, "SiteAddress3", SiteAddressLn3.Text);
@@ -545,6 +547,7 @@ namespace FisherPlantHire
             SetBookmarkText(wordDoc, "PlantDetail3", PlantDetailLn3.Text);
             SetBookmarkText(wordDoc, "PlantDetail4", PlantDetailLn4.Text);
             SetBookmarkText(wordDoc, "PlantDetail5", PlantDetailLn5.Text);
+            SetBookmarkText(wordDoc, "Note", Note.Text);
 
             // Instantiate and configure the PrintDialog
             var pd = new PrintDialog();

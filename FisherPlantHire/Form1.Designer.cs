@@ -635,10 +635,12 @@
             this.Note.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Note.Location = new System.Drawing.Point(11, 714);
             this.Note.Margin = new System.Windows.Forms.Padding(2);
+            this.Note.MaxLength = 170;
             this.Note.Multiline = true;
             this.Note.Name = "Note";
+            this.Note.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Note.Size = new System.Drawing.Size(564, 65);
-            this.Note.TabIndex = 49;
+            this.Note.TabIndex = 42;
             // 
             // label14
             // 
