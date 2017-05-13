@@ -1,7 +1,4 @@
-﻿
-#define  ALLOW_TEXT_IN_CURRENCY_INPUT
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -14,9 +11,8 @@ namespace FisherPlantHire
 {
     public partial class Form1 : Form
     {
-#if ALLOW_TEXT_IN_CURRENCY_INPUT
         private const byte RateTextLengthLimit = 8;
-#endif
+        private const byte NoteTextLengthLimit = 170;
         private Word.Application wordApp = null;
         private Word.Document wordDoc = null;
 
@@ -119,40 +115,49 @@ namespace FisherPlantHire
             PlantCode.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             PlantCode.AutoCompleteSource = AutoCompleteSource.ListItems;
 
+            // Limit length of text allowed in rate and note text boxes
+            WeeklyRate.MaxLength = RateTextLengthLimit;
+            DailyRate.MaxLength = RateTextLengthLimit;
+            DeliveryRate.MaxLength = RateTextLengthLimit;
+            CollectRate.MaxLength = RateTextLengthLimit;
+            Note.MaxLength = NoteTextLengthLimit;
+
             // Add handlers for the event raised when adding a new row using 
             // the "Add" button
             HirerDataGridView.RowsAdded += DataGridView_RowsAdded;
             MachineDataGridView.RowsAdded += DataGridView_RowsAdded;
 
+            // KeyPress events fire every time a key press is effected. This
+            // means it fires multiple times if the user holds a key down
+
             // Add the handlers for ensuring any input in comboboxes is 
-            // converted to uppercase and preventing commas being entered
-            HirerCode.KeyPress += ComboBox_KeyPress;
-            PlantCode.KeyPress += ComboBox_KeyPress;
+            // converted to uppercase
+            HirerCode.KeyPress += EnsureUpperCase_KeyPress;
+            PlantCode.KeyPress += EnsureUpperCase_KeyPress;
+            
+            //// Add handlers to limit the length of text allowed in rate text boxes
+            //WeeklyRate.KeyPress += LimitRateTextLength_KeyPress;
+            //DailyRate.KeyPress += LimitRateTextLength_KeyPress;
 
             // Add the handlers for preventing commas being entered in textboxes
-            HirerName.KeyPress += CsvTextBox_KeyPress;
-            HirerAddressLn1.KeyPress += CsvTextBox_KeyPress;
-            HirerAddressLn2.KeyPress += CsvTextBox_KeyPress;
-            HirerAddressLn3.KeyPress += CsvTextBox_KeyPress;
-            HirerAddressLn4.KeyPress += CsvTextBox_KeyPress;
-            HirerAddressLn5.KeyPress += CsvTextBox_KeyPress;
-            PlantDetailLn1.KeyPress += CsvTextBox_KeyPress;
-            PlantDetailLn2.KeyPress += CsvTextBox_KeyPress;
-            PlantDetailLn3.KeyPress += CsvTextBox_KeyPress;
-            PlantDetailLn4.KeyPress += CsvTextBox_KeyPress;
-            PlantDetailLn5.KeyPress += CsvTextBox_KeyPress;
-            OrderNumber.KeyPress += CsvTextBox_KeyPress;
-
-            // Add the handlers for ensuring the correct format in rate textboxes
-            WeeklyRate.KeyPress += CurrencyTextBox_KeyPress;
-            DailyRate.KeyPress += CurrencyTextBox_KeyPress;
-            DeliveryRate.KeyPress += CurrencyTextBox_KeyPress;
-            CollectRate.KeyPress += CurrencyTextBox_KeyPress;
-
-            WeeklyRate.Validating += CurrencyTextBox_Validating;
-            DailyRate.Validating += CurrencyTextBox_Validating;
-            DeliveryRate.Validating += CurrencyTextBox_Validating;
-            CollectRate.Validating += CurrencyTextBox_Validating;
+            HirerCode.KeyPress += PreventCommas_KeyPress;
+            PlantCode.KeyPress += PreventCommas_KeyPress;
+            HirerName.KeyPress += PreventCommas_KeyPress;
+            HirerAddressLn1.KeyPress += PreventCommas_KeyPress;
+            HirerAddressLn2.KeyPress += PreventCommas_KeyPress;
+            HirerAddressLn3.KeyPress += PreventCommas_KeyPress;
+            HirerAddressLn4.KeyPress += PreventCommas_KeyPress;
+            HirerAddressLn5.KeyPress += PreventCommas_KeyPress;
+            PlantDetailLn1.KeyPress += PreventCommas_KeyPress;
+            PlantDetailLn2.KeyPress += PreventCommas_KeyPress;
+            PlantDetailLn3.KeyPress += PreventCommas_KeyPress;
+            PlantDetailLn4.KeyPress += PreventCommas_KeyPress;
+            PlantDetailLn5.KeyPress += PreventCommas_KeyPress;
+            OrderNumber.KeyPress += PreventCommas_KeyPress;
+            WeeklyRate.KeyPress += PreventCommas_KeyPress;
+            DailyRate.KeyPress += PreventCommas_KeyPress;
+            DeliveryRate.KeyPress += PreventCommas_KeyPress;
+            CollectRate.KeyPress += PreventCommas_KeyPress;
 
             // Ensure all controls are clear when starting
             ClearAllControls();
@@ -180,96 +185,23 @@ namespace FisherPlantHire
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private void ComboBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void EnsureUpperCase_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // This event fires every time a key press is effected. This means 
-            // it fires multiple times if the user holds a key down
-
             // Check the key being pressed is a letter
             if (Char.IsLetter(e.KeyChar))
             {
                 // Convert the key to uppercase and give it back
                 e.KeyChar = Char.ToUpper(e.KeyChar);
             }
-            // Check if the key being pressed is a comma
-            else if (e.KeyChar == ',')
-            {
-                // Mark the event as handled so that nothing further happens
-                e.Handled = true;
-            }
         }
 
-        private void CsvTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void PreventCommas_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // This event fires every time a key press is effected. This means 
-            // it fires multiple times if the user holds a key down
-
             // Check if the key being pressed is a comma
             if (e.KeyChar == ',')
             {
                 // Mark the event as handled so that nothing further happens
                 e.Handled = true;
-            }
-        }
-
-        private void CurrencyTextBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // This event fires every time a key press is effected. This means 
-            // it fires multiple times if the user holds a key down
-
-            // Check if the key being pressed is a comma
-            if (e.KeyChar == ',')
-            {
-                // Mark the event as handled so that nothing further happens
-                e.Handled = true;
-            }
-#if !ALLOW_TEXT_IN_CURRENCY_INPUT
-            // Prevent non digit characters but allow decimal points and 
-            // control keys (e.g. backspace, Ctrl+V, etc)
-            else if ((!Char.IsDigit(e.KeyChar)) && (e.KeyChar != '.')
-                && (!Char.IsControl(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
-#else
-            //Prevent more than n characters
-            else if ((((TextBox)sender).Text.Length >= RateTextLengthLimit) 
-                && (!Char.IsControl(e.KeyChar)))
-            {
-                e.Handled = true;
-            }
-#endif
-            // Prevent more than one decimal point
-            else if ((e.KeyChar == '.') && ( ((TextBox)sender).Text.Contains(".")))
-            {
-                e.Handled = true;
-                return;
-            }
-            // Prevent more than two decimal places
-            else if (Char.IsDigit(e.KeyChar))
-            {
-                string Text = ((TextBox)sender).Text;
-                int DecimalPlaces = Text.Split('.').Count() > 1 
-                    ? Text.Split('.').ToList().ElementAt(1).Length : 0;
-
-                if (DecimalPlaces == 2)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void CurrencyTextBox_Validating(object sender, CancelEventArgs e)
-        {
-            // Check if the entered text can be correctly parsed as a decimal 
-            // in the style of currency
-            Decimal Value = 0;
-            String Text = ((TextBox)sender).Text;
-            if (!string.IsNullOrEmpty(Text) && !decimal.TryParse(Text, 
-                System.Globalization.NumberStyles.Currency, null, out Value))
-            {
-                // Cancel the validation
-                e.Cancel = true;
             }
         }
 
@@ -299,8 +231,8 @@ namespace FisherPlantHire
                 PlantDetailLn3.Text = m.DetailLn3;
                 PlantDetailLn4.Text = m.DetailLn4;
                 PlantDetailLn5.Text = m.DetailLn5;
-                WeeklyRate.Text = m.WeeklyRate.ToString();
-                DailyRate.Text = m.DailyRate.ToString();
+                WeeklyRate.Text = m.WeeklyRate;
+                DailyRate.Text = m.DailyRate;
             }
         }
 
@@ -336,8 +268,8 @@ namespace FisherPlantHire
                 DetailLn3 = PlantDetailLn3.Text,
                 DetailLn4 = PlantDetailLn4.Text,
                 DetailLn5 = PlantDetailLn5.Text,
-                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
-                DailyRate = Decimal.Parse(DailyRate.Text)
+                WeeklyRate = WeeklyRate.Text,
+                DailyRate = DailyRate.Text
             };
 
             // Add the new object to the Binding source
@@ -396,8 +328,8 @@ namespace FisherPlantHire
                 DetailLn3 = PlantDetailLn3.Text,
                 DetailLn4 = PlantDetailLn4.Text,
                 DetailLn5 = PlantDetailLn5.Text,
-                WeeklyRate = Decimal.Parse(WeeklyRate.Text),
-                DailyRate = Decimal.Parse(DailyRate.Text)
+                WeeklyRate = WeeklyRate.Text,
+                DailyRate = DailyRate.Text
             };
 
             // Get index of selected item to update

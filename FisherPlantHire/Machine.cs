@@ -32,8 +32,8 @@ namespace FisherPlantHire
         public string DetailLn3 { get; set; }
         public string DetailLn4 { get; set; }
         public string DetailLn5 { get; set; }
-        public decimal WeeklyRate { get; set; }
-        public decimal DailyRate { get; set; }
+        public string WeeklyRate { get; set; }
+        public string DailyRate { get; set; }
 
         public Machine()
         {
@@ -51,16 +51,8 @@ namespace FisherPlantHire
                 DetailLn3 = string.Copy(csvFields[(int)++f]);
                 DetailLn4 = string.Copy(csvFields[(int)++f]);
                 DetailLn5 = string.Copy(csvFields[(int)++f]);
-
-                if (string.IsNullOrEmpty(csvFields[(int)++f]))
-                    WeeklyRate = 0;
-                else
-                    WeeklyRate = decimal.Parse(csvFields[(int)f], NumberStyles.Currency);
-
-                if (string.IsNullOrEmpty(csvFields[(int)++f]))
-                    DailyRate = 0;
-                else
-                    DailyRate = decimal.Parse(csvFields[(int)f], NumberStyles.Currency);
+                WeeklyRate = string.Copy(csvFields[(int)++f]);
+                DailyRate = string.Copy(csvFields[(int)++f]);
             }
             catch (System.Exception e) when (e is System.FormatException || e is System.IndexOutOfRangeException)
             {
@@ -73,9 +65,8 @@ namespace FisherPlantHire
             // Concatenate all the property strings
             string s =
                 string.Join(",",
-                new string[] { Code, DetailLn1, DetailLn2, DetailLn3, DetailLn4, DetailLn5,
-                    WeeklyRate.ToString("F2", CultureInfo.InvariantCulture),
-                    DailyRate.ToString("F2", CultureInfo.InvariantCulture) });
+                new string[] { Code, DetailLn1, DetailLn2, DetailLn3,
+                    DetailLn4, DetailLn5, WeeklyRate, DailyRate });
             return s;
         }
     }
